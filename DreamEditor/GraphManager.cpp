@@ -55,12 +55,12 @@ void CheckDevILError()
 	}
 }
 
-GraphManager::GraphManager(int argc, char* argv[])
+GraphManager::GraphManager(char* fn, char* im)
 {
 	// Validate and Extract command line arguments: filename and interface mode option
-	if (CheckFilename(argv[1]))
+	if (CheckFilename(fn))
 	{
-		filename = argv[1];
+		filename = fn;
 		bInitializeSuccess = true;
 	}
 	else
@@ -69,9 +69,9 @@ GraphManager::GraphManager(int argc, char* argv[])
 		bInitializeSuccess = false;
 		return;
 	}
-	if (argc == 3)
+	if (im != "default")
 	{
-		bFullscreen = GetInterfaceMode(argv[2]);
+		bFullscreen = GetInterfaceMode(im);
 	}
 	bInitializeSuccess = false;	// Default False
 

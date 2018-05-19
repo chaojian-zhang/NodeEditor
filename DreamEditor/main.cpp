@@ -9,6 +9,7 @@
 	rendering.
 */
 #include "GraphManager.h"
+#include <fstream>
 
 #pragma comment(lib, "assimp.lib")
 #pragma comment(lib, "DevIL.lib")
@@ -20,24 +21,38 @@
 
 
 // Use Input arguments to specify default loading map and initial interface mdoe -- Used for Drag and Load and File Opening and Startup Desktop
+// Command line format: [ProgramName] [Filename] [InterfaceMode]
 int main(int argc, char* argv[])
 {
-	// Usage Error Check: Must Provide a file
+	char* fileName = nullptr;
+	char* interfaceMode = "default";
+
+	// If no file was provided, create one
 	if (argc == 1)
 	{
-		//cout << "Require a file path to run." << endl;
-		cout << "Drag a blank text file onto DreamEditor.exe to start editing." << endl;
-		cin.get();
-		return 0;
+		fileName = "default.dream";
+		std::ofstream{ fileName };
 	}
-
-	// Create a Graph: [ProgramName] [Filename] [InterfaceMode]
-	GraphManager graph(argc, argv);
+	if (argc == 2)
+		fileName = argv[1];
+	if (argc == 2)
+	{
+		fileName = argv[1];
+		interfaceMode = argv[2];
+	}
+	
+	// Create a Graph
+	GraphManager graph(fileName, interfaceMode);
 
 	if (graph.bInitializeSuccess)
 	{
 		// Enter Main loop
 		graph.Begin();
+	}
+	else
+	{
+		cout << "Initialization failure." << endl;
+		cin.get();
 	}
 
 	return 0;

@@ -42,7 +42,7 @@ enum CursorIcon
 class GraphManager
 {
 public: 
-	GraphManager(int argc, char* argv[]); // Load files and create interface
+	GraphManager(char* fn, char* im); // Load file and create interface
 	~GraphManager(); // Release Dynamically created resources and close the window, do other clean up as well
 	
 	// Enter main loop and process events
