@@ -1,0 +1,2 @@
+// Naming convention used in this application: words in vairiables are Uppercase seperated, Enums are Uppercase Beginned, Macros are _ seperated when needed
+// Objects Class are defined beginning with Uppercase characters.
