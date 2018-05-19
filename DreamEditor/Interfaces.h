@@ -1,0 +1,13 @@
+#pragma once
+#include "MainMenu.h"
+#include "Canvas.h"
+#include "DocumentPropertyPanel.h"
+#include "ImageNodePropertyPanel.h"
+#include "MeshNodePropertyPanel.h"
+#include "TextNodePropertyPanel.h"
+#include "FileMenuPopupMenu.h"
+#include "HelpMenuPopupMenu.h"
+#include "MeshCreationPopupMenu.h"
+#include "WindowMenuPopupMenu.h"
+#include "AboutPopupScreen.h"
+#include "ShortcutsPopupScreen.h"

@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\FontManagement">
+      <UniqueIdentifier>{3b14f1f6-6084-443c-b18c-aa678afce41e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\InterfaceElements">
+      <UniqueIdentifier>{6c3a90d0-e1e4-404d-bc6c-896fa0c035f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CanvasNodes">
+      <UniqueIdentifier>{13d1fcf2-9383-4542-8353-ae8959c13bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationManagement">
+      <UniqueIdentifier>{27b5ed5b-2f2e-4d50-b5f4-fdb316e8c0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RenderPrimitives">
+      <UniqueIdentifier>{050b1c7c-d59f-440a-86f3-09b72c1a0c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationManagement\DataTypes">
+      <UniqueIdentifier>{35c22ac2-a014-41b2-9db2-384729902654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationManagement\Interfaces">
+      <UniqueIdentifier>{40d8720c-3b60-4dfb-8d29-c2dade9df380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationManagement\Main">
+      <UniqueIdentifier>{7a411078-9337-4402-bbb7-96fc1b1d9a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CanvasNodes\DataTypes">
+      <UniqueIdentifier>{59cb0cee-23b9-4d69-96f5-38a6338ad471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CanvasNodes\Utility">
+      <UniqueIdentifier>{96d45799-0d10-4381-82c9-e838a06c0512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CanvasNodes\NodeTypes">
+      <UniqueIdentifier>{5edaf207-6799-4528-9716-d406cd46d272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationManagement\Utilities">
+      <UniqueIdentifier>{28bb9e07-9bf6-40b5-b068-b5162b508212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\InterfaceElements\DataTypes">
+      <UniqueIdentifier>{c1d66d57-5356-48a4-b10b-0308b5ff2cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RenderPrimitives\RenderingEntities">
+      <UniqueIdentifier>{6bb0beea-505e-4b40-93ff-f10ca52edc59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FontChar.h">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="FontCommon.h">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="FontInfo.h">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceElement.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="GridLayout.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable3DMesh.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphManager.h">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DevNotes.h">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderResource.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StringData.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollision.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageData.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasNodes.h">
+      <Filter>Source Files\CanvasNodes\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageResource.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="TextNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="FileMenuPopupMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowMenuPopupMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshCreationPopupMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="DocumentPropertyPanel.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshNodePropertyPanel.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TextNodePropertyPanel.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageNodePropertyPanel.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemWrapper.h">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticShape.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpMenuPopupMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortcutsPopupScreen.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutPopupScreen.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MathElegent.h">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupMenu.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyPanel.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainNode.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableDebugRay.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableImageIcon.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableLine.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableImageRect.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableRoundCornerFrame.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable3DQuoteFrame.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableString.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="TextContainer.h">
+      <Filter>Source Files\InterfaceElements\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="TextArea.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="TextLabel.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableRoundCornerQuad.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableRoundSidesQuad.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="TextEditor.h">
+      <Filter>Source Files\InterfaceElements\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="TextSpecParser.h">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Attribute.h">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Hash.h">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialTextures.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshSpec.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshResource.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableBase.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Colors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Polysoup.h">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
+      <Filter>Source Files\RenderPrimitives\RenderingEntities</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasNodeSortedLinkedList.h">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCursorHighlight.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Locales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphManager.cpp">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="TextNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageData.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderResource.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshCreationPopupMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenuPopupMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowMenuPopupMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpMenuPopupMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentPropertyPanel.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageNodePropertyPanel.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshNodePropertyPanel.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="TextNodePropertyPanel.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="GridLayout.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceElement.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="StringData.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupMenu.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ProeprtyPanel.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticShape.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable3DMesh.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemWrapper.cpp">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageResource.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="FontInfo.cpp">
+      <Filter>Source Files\FontManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="MathElegent.cpp">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutPopupScreen.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortcutsPopupScreen.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainNode.cpp">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableDebugRay.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableImageIcon.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableLine.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableImageRect.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableRoundCornerFrame.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable3DQuoteFrame.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableString.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="TextContainer.cpp">
+      <Filter>Source Files\InterfaceElements\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="TextLabel.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="TextArea.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableRoundCornerQuad.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableRoundSidesQuad.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="TextEditor.cpp">
+      <Filter>Source Files\InterfaceElements\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="TextSpecParser.cpp">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Attribute.cpp">
+      <Filter>Source Files\ApplicationManagement\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Hash.cpp">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshSpec.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshResource.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialTextures.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableBase.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Colors.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Polysoup.cpp">
+      <Filter>Source Files\CanvasNodes\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
+      <Filter>Source Files\RenderPrimitives\RenderingEntities</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasNodeSortedLinkedList.cpp">
+      <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableCursorHighlight.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DreamEditor.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

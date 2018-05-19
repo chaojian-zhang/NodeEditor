@@ -1,0 +1,5 @@
+1. Install VS2013 or above
+2. Set DreamEditor as startup project
+3. COmpile and run, no extra configuration is needed
+
+Notice: This version of source code doesn't present the up-to-date status of the project, download original source if needed.

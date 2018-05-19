@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D6A95CEB-9B79-411E-A273-BAC31D00D296}</ProjectGuid>
+    <RootNamespace>DreamEditor</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)\Shared\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(SolutionDir)\Shared\Library</LibraryPath>
+    <OutDir>$(SolutionDir)$(Configuration)\DreamEditor\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)\Shared\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(SolutionDir)\Shared\Library</LibraryPath>
+    <OutDir>$(SolutionDir)$(Configuration)\DreamEditor</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AboutPopupScreen.cpp" />
+    <ClCompile Include="Attribute.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CameraNode.cpp" />
+    <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="CanvasNode.cpp" />
+    <ClCompile Include="CanvasNodeSortedLinkedList.cpp" />
+    <ClCompile Include="Colors.cpp" />
+    <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="DocumentPropertyPanel.cpp" />
+    <ClCompile Include="FileMenuPopupMenu.cpp" />
+    <ClCompile Include="FontInfo.cpp" />
+    <ClCompile Include="GridLayout.cpp" />
+    <ClCompile Include="Hash.cpp" />
+    <ClCompile Include="HelpMenuPopupMenu.cpp" />
+    <ClCompile Include="ImageNode.cpp" />
+    <ClCompile Include="ImageNodePropertyPanel.cpp" />
+    <ClCompile Include="ImageResource.cpp" />
+    <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="InterfaceElement.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MaterialTextures.cpp" />
+    <ClCompile Include="MathElegent.cpp" />
+    <ClCompile Include="MeshCreationPopupMenu.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GraphManager.cpp" />
+    <ClCompile Include="ImageData.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeshSpec.cpp" />
+    <ClCompile Include="MeshNode.cpp" />
+    <ClCompile Include="MeshNodePropertyPanel.cpp" />
+    <ClCompile Include="MeshResource.cpp" />
+    <ClCompile Include="RenderableCursorHighlight.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="Polysoup.cpp" />
+    <ClCompile Include="PopupMenu.cpp" />
+    <ClCompile Include="ProeprtyPanel.cpp" />
+    <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="RenderableBase.cpp" />
+    <ClCompile Include="RenderableImageRect.cpp" />
+    <ClCompile Include="RenderableLine.cpp" />
+    <ClCompile Include="RenderableString.cpp" />
+    <ClCompile Include="Renderable.cpp" />
+    <ClCompile Include="RenderableImageIcon.cpp" />
+    <ClCompile Include="RenderableRoundCornerQuad.cpp" />
+    <ClCompile Include="RenderableRoundSidesQuad.cpp" />
+    <ClCompile Include="Renderable3DMesh.cpp" />
+    <ClCompile Include="Renderable3DQuoteFrame.cpp" />
+    <ClCompile Include="RenderableRoundCornerFrame.cpp" />
+    <ClCompile Include="RenderableDebugRay.cpp" />
+    <ClCompile Include="ShaderResource.cpp" />
+    <ClCompile Include="Shaders.cpp" />
+    <ClCompile Include="ShortcutsPopupScreen.cpp" />
+    <ClCompile Include="StaticShape.cpp" />
+    <ClCompile Include="StringData.cpp" />
+    <ClCompile Include="SystemWrapper.cpp" />
+    <ClCompile Include="TerrainNode.cpp" />
+    <ClCompile Include="TextArea.cpp" />
+    <ClCompile Include="TextContainer.cpp" />
+    <ClCompile Include="TextEditor.cpp" />
+    <ClCompile Include="TextLabel.cpp" />
+    <ClCompile Include="TextNode.cpp" />
+    <ClCompile Include="TextNodePropertyPanel.cpp" />
+    <ClCompile Include="TextSpecParser.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="WindowMenuPopupMenu.cpp" />
+    <ClCompile Include="World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutPopupScreen.h" />
+    <ClInclude Include="Attribute.h" />
+    <ClInclude Include="BoxCollision.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="CameraNode.h" />
+    <ClInclude Include="Canvas.h" />
+    <ClInclude Include="CanvasNode.h" />
+    <ClInclude Include="CanvasNodes.h" />
+    <ClInclude Include="CanvasNodeSortedLinkedList.h" />
+    <ClInclude Include="Colors.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="DevNotes.h" />
+    <ClInclude Include="GlobalMacros.h" />
+    <ClInclude Include="Hash.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="MaterialTextures.h" />
+    <ClInclude Include="MathElegent.h" />
+    <ClInclude Include="FontChar.h" />
+    <ClInclude Include="FontCommon.h" />
+    <ClInclude Include="FontInfo.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="GraphManager.h" />
+    <ClInclude Include="GridLayout.h" />
+    <ClInclude Include="HelpMenuPopupMenu.h" />
+    <ClInclude Include="ImageData.h" />
+    <ClInclude Include="ImageNode.h" />
+    <ClInclude Include="ImageNodePropertyPanel.h" />
+    <ClInclude Include="ImageResource.h" />
+    <ClInclude Include="Interfaces.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Locales.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MeshCreationPopupMenu.h" />
+    <ClInclude Include="MeshSpec.h" />
+    <ClInclude Include="MeshNodePropertyPanel.h" />
+    <ClInclude Include="MeshResource.h" />
+    <ClInclude Include="FileMenuPopupMenu.h" />
+    <ClInclude Include="DocumentPropertyPanel.h" />
+    <ClInclude Include="RenderableCursorHighlight.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Sun.h" />
+    <ClInclude Include="Polysoup.h" />
+    <ClInclude Include="PopupMenu.h" />
+    <ClInclude Include="PropertyPanel.h" />
+    <ClInclude Include="Panel.h" />
+    <ClInclude Include="RenderableBase.h" />
+    <ClInclude Include="RenderableImageIcon.h" />
+    <ClInclude Include="InterfaceElement.h" />
+    <ClInclude Include="RenderableImageRect.h" />
+    <ClInclude Include="RenderableLine.h" />
+    <ClInclude Include="RenderableRoundCornerQuad.h" />
+    <ClInclude Include="RenderableRoundSidesQuad.h" />
+    <ClInclude Include="RenderableString.h" />
+    <ClInclude Include="Renderable3DMesh.h" />
+    <ClInclude Include="Renderable3DQuoteFrame.h" />
+    <ClInclude Include="RenderableRoundCornerFrame.h" />
+    <ClInclude Include="RenderableDebugRay.h" />
+    <ClInclude Include="Shaders.h" />
+    <ClInclude Include="ShortcutsPopupScreen.h" />
+    <ClInclude Include="StaticShape.h" />
+    <ClInclude Include="StringData.h" />
+    <ClInclude Include="Interface.h" />
+    <ClInclude Include="MeshNode.h" />
+    <ClInclude Include="SystemWrapper.h" />
+    <ClInclude Include="TerrainNode.h" />
+    <ClInclude Include="TextArea.h" />
+    <ClInclude Include="TextContainer.h" />
+    <ClInclude Include="TextEditor.h" />
+    <ClInclude Include="Renderable.h" />
+    <ClInclude Include="ShaderResource.h" />
+    <ClInclude Include="TextLabel.h" />
+    <ClInclude Include="TextNode.h" />
+    <ClInclude Include="TextNodePropertyPanel.h" />
+    <ClInclude Include="TextSpecParser.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="WindowMenuPopupMenu.h" />
+    <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DreamEditor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
