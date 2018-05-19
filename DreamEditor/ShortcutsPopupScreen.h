@@ -15,7 +15,11 @@ public:
 	void Render();
 
 private:
-	// No Interface Elements
+	// Interface Elements
+	// All are informative elements
+	//TextLabel* line1;
+	//TextLabel* line2;
+	//TextLabel* line3;
 
 	// Background
 	static unsigned int areaWidth;
@@ -23,4 +27,8 @@ private:
 	static float screenTexCoords[8];
 	static GLuint screenTexImage;
 	Panel* backgroundImage;
+
+private:
+	// Use a linked list to help managing
+	// LinkedList labels;
 };

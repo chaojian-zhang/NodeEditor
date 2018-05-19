@@ -17,6 +17,14 @@ float ImageNode::TextFrameHoverColor[3] = { 0, 0.48, 0.769 };
 float ImageNode::TextBackgroundColor[3] = { 0.23, 0.23, 0.23 };
 float ImageNode::SurfaceBorderColor[3] = { 0.788f, 0.788f, 0.788f };
 float ImageNode::SurfaceColor[3] = { 0.407f, 0.407f, 0.407f };
+
+//float ImageNode::TextFrameColor[3] = { 0.376f, 0.141f, 0.141f };
+//float ImageNode::TextFrameHoverColor[3] = { 0, 0.48, 0.769 };
+//float ImageNode::TextBackgroundColor[3] = { 0.165f, 0.024f, 0.024f };
+//float ImageNode::SurfaceBorderColor[3] = { 0.204f, 0.173f, 0.173f };
+//float ImageNode::SurfaceColor[3] = { 0.160f, 0.027f, 0.027f };
+
+//float ImageNode::SurfaceOpacity = 0.75f;
 float ImageNode::SurfaceOpacity = 0.85f;
 float ImageNode::ImagePixelSizeToMeterScale = 1000;
 
@@ -163,7 +171,8 @@ void ImageNode::WakeUp()
 }
 void ImageNode::FallAsleep()
 {
-	CanvasNode::FallAsleep();
+	if (bSleep) return;
+	bSleep = true;
 
 	if (bPendingDeletion)	return;
 

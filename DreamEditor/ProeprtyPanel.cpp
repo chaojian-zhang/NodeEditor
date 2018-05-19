@@ -3,11 +3,14 @@
 #include "Constants.h"
 #include "MaterialTextures.h"
 
+//int PropertyPanel::LayoutBeginPositionX = 8;
+//int PropertyPanel::LayoutBeginPositionY = -8;
 int PropertyPanel::LayoutBeginPositionX = 32;
 int PropertyPanel::LayoutBeginPositionY = -24;
 unsigned int PropertyPanel::LayoutRowPadding = 8U;
 unsigned int PropertyPanel::LayoutColumnPadding = 4U;
 unsigned int PropertyPanel::TextContainerWidth = 280U;
+//float PropertyPanel::PropertyPanelTexCoords[8] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f };	// Debug_Temp: Pending Definition	// Defined by Childrean Classes
 GLuint PropertyPanel::PropertyPanelTexImage = NULL;
 unsigned int PropertyPanel::PanelWidth = 384U;	// The original design size 512x801 is too big on screen
 unsigned int PropertyPanel::PanelHeight = 600U;
@@ -54,6 +57,7 @@ void PropertyPanel::OnResizeFramebuffer(int width, int height)
 	viewportX = 25U;
 	viewportY = GraphManager::windowHeight / 2 - PanelHeight / 3;
 	viewportW = PanelWidth;
+	//viewportH = height - MainMenu::MainMenuHeight;
 	viewportH = PanelHeight;
 
 	// Update Projection and View

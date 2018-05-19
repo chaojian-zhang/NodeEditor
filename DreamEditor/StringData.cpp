@@ -8,6 +8,14 @@
 
 // Some problem I am having here is using int to convert unsigned int, although very unlikely, when we are dealing with really big unsigned int, this will cause accuracy problem
 
+/*
+StringData::StringData(unsigned short* initialString)
+{
+	numChars = GetStringLength(initialString);
+	string = new unsigned short[numChars];
+	memcpy(string, initialString, numChars * 2);	// 2 bytes each; Obviously, string is not NULL terminated
+}*/
+
 // Static Variable
 unsigned short StringData::copyBuffer[65536] = { 0 };
 
@@ -280,6 +288,39 @@ void StringData::UpdateStringLevel(unsigned int addition)
 			ReallocateString(requiredNumChars);
 			std::cout << "[Warning] Caution string length is quite long: " << requiredNumChars << std::endl;
 		}
+
+		/*
+		// Previous vversion:
+		//		Increment string size level works fine for manual input but doesn't suit when paste huge amount of text
+		switch (stringPreNumChars)
+		{
+		case LeveledStringLength_0:
+			ReallocateString(LeveledStringLength_1);
+			break;
+		case LeveledStringLength_1:
+			ReallocateString(LeveledStringLength_2);
+			break;
+		case LeveledStringLength_2:
+			ReallocateString(LeveledStringLength_3);
+			break;
+		case LeveledStringLength_3:
+			ReallocateString(LeveledStringLength_4);
+			break;
+		case LeveledStringLength_4:
+			ReallocateString(LeveledStringLength_5);
+			break;
+		case LeveledStringLength_5:
+			ReallocateString(LeveledStringLength_6);
+			break;
+		case LeveledStringLength_6:	// The Theoratical Max String Size we could address is: range(unsigned interger)/2, which would be 2^32 / 2 = 2147483648 ushort characters, which would be 4 terabytes
+			ReallocateString(2147483648/2 -1);	// Devide by two here to compensate (unsigned int) to (int) conversion we used in our functions
+			break;
+		default:	// Only when we are above Level 6 this could occur
+			std::cout << "[Error] Serious error occured when try to manage string Data: \
+						 The reqeusted string data range is above 4GB. \
+						 Please make sure you are not creating too many rambling characters." 
+						 << std::endl;
+		}*/
 	}
 }
 

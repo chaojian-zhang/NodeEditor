@@ -208,6 +208,15 @@ void MeshSpec::Stream(MeshSpec* meshSpec)
 			__debugbreak();
 		}
 
+		// Calculate Tangents, since this didn't work when ReadFile*(
+		// importer.ApplyPostProcessing(aiProcess_CalcTangentSpace);
+		//if (scene == NULL)
+		//{
+		//	// __Debug__
+		//	cout << "[Error] Cannot load mesh: " << importer.GetErrorString() << endl;
+		//	__debugbreak();
+		//}
+
 		// If we have at least one mesh and it is triangulated, then (prepare to) load it into openGL; Actually we are just loading the first mesh
 		if (scene->mNumMeshes != 0 && scene->mMeshes[0]->mPrimitiveTypes | aiPrimitiveType_TRIANGLE)
 		{
@@ -243,12 +252,16 @@ void MeshSpec::Stream(MeshSpec* meshSpec)
 
 				meshSpec->tempVertexDataSize = meshSpec->tempMeshObject->mNumVertices * sizeof(aiVector3D);
 				meshSpec->tempTexcoordSize = meshSpec->tempMeshObject->mNumVertices * sizeof(aiVector3D);
+				/*meshSpec->mesh = new Renderable3DMesh(meshObject->mVertices, vertexDataSize, meshObject->mNormals, meshObject->mTangents,
+					indices, indexDataSize, meshObject->mTextureCoords[0], texcoordSize, meshSpec->material);*/	// Called in second stage
 			}
 			// Otherwise create a Renderable Mesh for simple type shaders
 			else
 			{
 				meshSpec->tempVertexDataSize = meshSpec->tempMeshObject->mNumVertices * sizeof(aiVector3D);
 				meshSpec->tempTexcoordSize = meshSpec->tempMeshObject->mNumVertices * sizeof(aiVector3D);
+				/*meshSpec->mesh = new Renderable3DMesh(meshObject->mVertices, vertexDataSize, indices, indexDataSize, 
+					meshObject->mTextureCoords[0], texcoordSize, meshSpec->material);*/	// Called in second stage
 			}			
 
 			// Create Default Collision Object if not specified
@@ -299,6 +312,10 @@ void MeshSpec::Stream(MeshSpec* meshSpec)
 			}
 		}
 	}
+
+
+	// Wake Up The Material As Well
+	// meshSpec->material->WakeUp();	// Now in second stage, since our texture loading doesn't support multithread yet
 
 	// Enter next stage
 	meshSpec->bFinalizeLoadStage = true;

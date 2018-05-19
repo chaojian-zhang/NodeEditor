@@ -15,7 +15,7 @@ public:
 	// Dynamic Streaming
 	virtual void Update(){};
 	virtual void WakeUp(){ if (!bSleep){ return; }	/*In case fake wake up*/ if (bPendingDeletion){ return; } bSleep = false; };	// Create OpenGL Renderables
-	virtual void FallAsleep() { if (bSleep == true){ return; }bSleep = true; };	// Destroy OpenGL Renderables, but still keep reference to the data
+	virtual void FallAsleep()= 0;	// Destroy OpenGL Renderables, but still keep reference to the data
 
 	// Interaction Interface
 	virtual void OnMouseOver(double xpos, double ypos);	// Inputs only meaningful for Text and Image node, in which case it is relative to X, Y origin; Y is negative

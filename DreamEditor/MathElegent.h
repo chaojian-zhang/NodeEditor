@@ -20,3 +20,5 @@ struct Vector3f
 // Return the length of string, dosn't include NULL character
 // The complete storage space for a string should be GetStringLength(string)*2 + 2
 unsigned int GetStringLength(unsigned short* string);
+
+// bool CompareStrings(unsigned short* string1, unsigned short* string2);	// Compare U16 Strings, equal return true, assume NULL terminated

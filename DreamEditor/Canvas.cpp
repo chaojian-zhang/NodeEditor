@@ -17,6 +17,9 @@ float Canvas::cameraMovementSpeed = 0.1f;
 float Canvas::DefaultLabelDisplayDuration = 5.f;	// In seconds
 Sun* Canvas::sun = NULL;
 
+// debug_temp
+//TextNode* tempText;
+
 void Canvas::Initialize()
 {
 	// Load Interface Texture
@@ -25,12 +28,23 @@ void Canvas::Initialize()
 
 	// Create Interface Elements
 	decorationFrame = new Panel(GraphManager::windowWidth, GraphManager::windowHeight, imageCoords, imageTexture, this);
+	// __Pending dropDownButton = new DropDownButton();
 	informationLabel = new TextLabel((unsigned short*)Canvas_Information_Welcome, true, this);
 	labelDisplayTime = 0;
 
 	terrain = new Terrain();
 
 	OnResizeFramebuffer(GraphManager::windowWidth, GraphManager::windowHeight);
+
+	// Debug_Temp
+	//tempText = new TextNode(0,5,-5);
+	//tempText->WakeUp();
+	//textNodes.Add(tempText);
+
+	// Debug Ray
+	//worldOrigin = new RenderableDebugRay(glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 10);	// A Test Location
+	// Debug Image
+	//debugImage = new RenderableImageRect(this, 256, 256, imageCoords, 0);
 
 	// Initialize Sun
 	sun = new Sun(this);
@@ -80,6 +94,7 @@ Canvas::~Canvas()
 
 	// Delete Inerface Elements
 	delete decorationFrame;
+	// __Pending delete dropDownButton;
 	delete informationLabel;
 
 	// Textre is managed by MaterialTexture object
@@ -97,6 +112,12 @@ void Canvas::Render()
 
 		// Set Draw State
 		drawState = 4;
+
+		// Render Background
+		//terrain->Render();
+		// Reason to render the ground: ????
+		// Reasons not to render the ground: so the shadow on the ground isn't clamped; 
+		//	so we can have a sky dome on the ground
 
 		// Render Text and Image Nodes
 		RenderVisibleNodes();	// Seriously I don't remember why this can effectively avoid MeshNodes being rendered
@@ -122,10 +143,21 @@ void Canvas::Render()
 
 		// 3D Objects
 		drawState = 3;
+		//drawState = 4;	// Debug Light View
+
+		// State Change
+		// __Debug__ TextNode: Current Setting of backface color doesn't look good, we might want to add additional decorations to existing 
+		// renderables for stylized backside rendering
 
 		// Render Nodes
 		terrain->Render();
 		RenderVisibleNodes();
+
+		// Debug Shadow: Ideally camera should always be in the center of the shadow map view - Currently it is a bit off
+		// worldOrigin->UpdateBuffer(camera->GetWorldPosition(), glm::vec3(0.f, 1.0f, 0.f), 10);
+
+		// RenderDebug Ray: Must before decoration frame to avoid depth buffer problem
+		//worldOrigin->Render();
 
 		// 2D interface
 		drawState = 2;
@@ -140,6 +172,10 @@ void Canvas::Render()
 			labelDisplayTime += GraphManager::deltaTime;	// Forward time steps
 		}
 		static GLuint debugTextureNo = 0;	// USage: Use Visual Studio BreakPoint to manually update this value to whatever you want to idsplay (e.g. Refer to Material.cpp which one it is using)
+
+		// Debug Image
+		//debugImage->UpdateTexture(debugTextureNo);
+		//debugImage->Render();
 	}
 }
 
@@ -165,6 +201,13 @@ void Canvas::Update()
 		|| KeyStates[CanvasKeyControls::Right])
 		&& currentSelection == NULL)
 	{
+		// Inefficient, computationally, also this doesn't take direcion into account. But this is indeed an elegant way to move forward in the direction of camera
+		/*glm::vec4 startDirection = glm::vec4(0.f, 0.f, -1.f, 0.f);
+		startDirection = camera->view * startDirection;
+		camera->Translate(-startDirection.x * cameraMovementSpeed, 0.f, startDirection.z * cameraMovementSpeed);
+		camera->UpdateMatrix();
+		UpdateNodeRenderState();*/
+
 		float Ry = camera->GetRotationY();
 		float accleration = cameraMovementSpeed * (KeyStates[CanvasKeyControls::Shift] ? 5 : 1);
 		camera->Translate(-accleration * glm::sin(Ry) * KeyStates[CanvasKeyControls::Forward], 0.f, -accleration * glm::cos(Ry) * KeyStates[CanvasKeyControls::Forward]);	// W
@@ -172,6 +215,21 @@ void Canvas::Update()
 		camera->Translate(accleration * glm::sin(Ry) * KeyStates[CanvasKeyControls::Backward],0.f, accleration * glm::cos(Ry) * KeyStates[CanvasKeyControls::Backward]);	// S
 		camera->Translate(accleration * glm::cos(Ry) * KeyStates[CanvasKeyControls::Right],	0.f, -accleration * glm::sin(Ry) * KeyStates[CanvasKeyControls::Right]);	// D
 		// For not so obvious reason the above way, although a bit more expensive, works better than the below methods, although algebraically they look the same.
+
+		//camera->Translate
+		//(
+		//	cameraMovementSpeed * 
+		//	( 
+		//		glm::sin(Ry) * (-KeyStates[CanvasKeyControls::Forward] + KeyStates[CanvasKeyControls::Backward]) +
+		//		glm::cos(Ry) * (-KeyStates[CanvasKeyControls::Left] + KeyStates[CanvasKeyControls::Right])
+		//	)
+		//	, 0.f
+		//	, cameraMovementSpeed * 
+		//	(
+		//		glm::cos(Ry) * (-KeyStates[CanvasKeyControls::Forward] + KeyStates[CanvasKeyControls::Left]) +
+		//		glm::sin(Ry) * (+KeyStates[CanvasKeyControls::Backward] - KeyStates[CanvasKeyControls::Right])
+		//	)
+		//);
 
 		camera->UpdateMatrix();
 		UpdateNodeRenderState();
@@ -374,7 +432,9 @@ void Canvas::UpdateDispatch(LinkedList* nodeList)
 					mNode->WakeUp();
 				}
 
-				if (ToCameraPlaneDistance(mNode) >(-mNode->GetSize()))	// In front of camera
+				// Notice the below ToCameraPlaneDIstance() doesn't produce correct value: When we are far from world center, the value will be very big. However, it does provide clue
+				//	whether or not we are infront of or behind the camera
+				if (ToCameraPlaneDistance(mNode) <(-mNode->GetSize()))	// In front of camera
 				{
 					mNode->bInvisible = false;
 					visibleNodes.Add(node, distance);
@@ -385,7 +445,10 @@ void Canvas::UpdateDispatch(LinkedList* nodeList)
 			{
 				if (!mNode->bSleep)
 				{
-					node->FallAsleep();
+					//node->FallAsleep();	// Deliberately never let nodes fall asleep, so that second time loading can be faster
+					// Note: This might cause problem when there are lots of different mesh nodes in the scene
+					// Note: Another reason for doing this is that currently distance calculation doesn't blend well with actual fog rendering in the scene,
+					//	if we let some Mesh fallAsleep, it will cause problem since other meshes at the same distance might still be awake
 					node->bInvisible = true;
 				}
 			}
@@ -398,7 +461,7 @@ void Canvas::UpdateDispatch(LinkedList* nodeList)
 				}
 
 				// Show the mesh if infront of camera
-				if (ToCameraPlaneDistance(mNode) > (-mNode->GetSize()))	// In front of camera
+				if (ToCameraPlaneDistance(mNode) < (-mNode->GetSize()))	// In front of camera: Notice this returns a negative value, so "Further" here means smaller
 				{
 					node->bInvisible = false;
 					visibleNodes.Add(node, distance);
@@ -415,7 +478,7 @@ void Canvas::UpdateDispatch(LinkedList* nodeList)
 			// If outside camera visible range and not asleep, put it to sleep
 			if (abs(distance) > fogDepth && !node->bSleep)
 			{
-				node->FallAsleep();
+				//node->FallAsleep();
 				node->bInvisible = true;
 			}
 
@@ -441,6 +504,9 @@ void Canvas::UpdateDispatch(LinkedList* nodeList)
 					visibleNodes.Add(node, distance);
 				}
 
+				//// Temporary version	// Necessary to get the correct distance so visible nodes is clean
+				//node->bInvisible = false;	// Always visible
+				//visibleNodes.Add(node, distance);
 			}
 		}
 		
@@ -480,8 +546,10 @@ void Canvas::OnMouseOver(double xpos, double ypos)
 		else
 		{
 			// Camera Rotation Implementation
+			// __Debug__: Now this is for debug purpose only since we decided not to implement this for our application due to complex collision and boundary detection which we didn't intend/expect when design this application. <This concern has already been resolved>
 			//camera->Rotate(0, rotationY, 0);*/
 			camera->Rotate(dVerti / scaleFactor / aspectRatio * 3.14f, rotationY, 0);	// 120.f controls amplitute
+			// <Deprecated Comment>Currently only available Y Axis Rotation to avoid Confusion; And also we are not changing movement control accordingly, because first person mode is still for debug now
 			camera->UpdateMatrix();
 
 			UpdateNodeRenderState();
@@ -492,6 +560,9 @@ void Canvas::OnMouseOver(double xpos, double ypos)
 	}
 	else
 	{
+		//if (MouseOverDispatch(&textNodes, xpos, ypos)){}
+		//else if (MouseOverDispatch(&imageNodes, xpos, ypos)){}
+		//// else if (MouseOverDispatch(&meshNodes, xpos, ypos)){}
 
 		if (currentSelection && KeyStates[CanvasKeyControls::MoveNode])
 		{
@@ -535,6 +606,7 @@ void Canvas::OnMouseOver(double xpos, double ypos)
 
 void Canvas::OnMouseButton(int button, int action, int mods, double xpos, double ypos)
 {
+	// __Debug__
 	// Rotate Camera Is Always needed
 	if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS)
 	{
@@ -572,6 +644,24 @@ void Canvas::OnMouseButton(int button, int action, int mods, double xpos, double
 	}
 	else
 	{
+		// Old-fashioned
+		//// Check Order here can help optimize performace: we check those who are most likes to be frequently clicked on first - textnode
+		//if (MouseButtonDispatch(&textNodes, button, action, mods, xpos, ypos))
+		//{
+		//	GraphManager::ShowTextNodeProperty(dynamic_cast<TextNode*>(currentSelection));
+		//}
+		//else if (MouseButtonDispatch(&imageNodes, button, action, mods, xpos, ypos))
+		//{
+		//	GraphManager::ShowImageNodeProperty(dynamic_cast<ImageNode*>(currentSelection));
+		//}
+		//else if (action == GLFW_PRESS && MouseButtonDispatch(&meshNodes, button, action, mods, xpos, ypos))	// 	Since MeshNode doesn't requrie MouseRelease/Repeat Events, thus avoid second time collision detection due to mouse release
+		//{
+		//	GraphManager::ShowMeshNodeProperty(dynamic_cast<MeshNode*>(currentSelection));
+		//}
+		//else
+		//{
+		//	if (action == GLFW_PRESS) GraphManager::ShowDocumentProperty();
+		//}
 
 		// Modern Method
 		CanvasNode* node = visibleNodes.Last();
@@ -677,6 +767,17 @@ void Canvas::OnKeyboardButton(int key, int scancode, int action, int mods)
 			GraphManager::ShowDocumentProperty();
 		}
 	}
+	// Add Preset Mesh/Gadgets
+	// __Release 0.75__ This feature is dropped for current release because lack of supported content
+	//else if (key == GLFW_KEY_C && (action == GLFW_PRESS) && currentSelection == NULL && (mods & GLFW_MOD_SHIFT))
+	//{
+	//	GraphManager::ShowMeshCreationPop();
+	//}
+	// Search Field Interaction: Jump to next search object
+	else if (key == GLFW_KEY_F3 && (action == GLFW_PRESS))
+	{	// Usage: After entering destinated search text, the user press enter to begin search, and once a result is found, camera will jump to the first jump location, use F3 to circle through all searched result
+		//GotoNextSearchResult();
+	}
 	// Auxiliary Movements_Debug Purpose: __Release 0.75__ Used because this makes editing easier somtimes
 	else if (key == GLFW_KEY_Z && (action == GLFW_PRESS || action == GLFW_REPEAT ) && currentSelection == NULL)	// Don't receive GLFW_Press case to avoid delay
 	{
@@ -690,6 +791,7 @@ void Canvas::OnKeyboardButton(int key, int scancode, int action, int mods)
 		camera->UpdateMatrix();
 		UpdateNodeRenderState();
 	}
+	// Debug_temp: debug Use
 	else if (key == GLFW_KEY_R && action == GLFW_PRESS && currentSelection == NULL)
 	{
 		camera->Rotation(0, 0, 0);
@@ -709,6 +811,43 @@ void Canvas::OnTextInput(unsigned int codepoint)
 		currentSelection->OnTextInput((unsigned short*)&codepoint,1);
 	}
 }
+
+//void Canvas::OnDropWindow(int count, const char** paths)
+//{
+//	// Update Data
+//	for (int i = 0; i < count; i++)
+//	{
+//		// Convert to U16
+//		std::wstring utf16 = SystemFunctions::ConvertU8toU16(paths[i]);
+//
+//		// Image?
+//		if (GraphManager::IsImageFile((unsigned short*)utf16.c_str(), utf16.length()))
+//		{
+//			cout << "[Debug] Detected ImageFile Drop in" << endl;
+//
+//			tempImageNode = new ImageNode();
+//		}
+//		// Mesh?
+//		else if (GraphManager::IsMeshSpecFile((unsigned short*)utf16.c_str(), utf16.length()))
+//		{
+//			cout << "[Debug] Detected MeshSPecFile Drop in" << endl;
+//		}
+//		// Map?
+//		else if (GraphManager::IsDreamMapFile((unsigned short*)utf16.c_str(), utf16.length()))
+//		{
+//			cout << "[Debug] Detected MapFIle Drop in" << endl;
+//		}
+//		//// Other wise send to a text or Image node - In this case there is no sense to send to a textNode: what if we just want the path to an image? SO we'd better just do not bother that for now
+//		//else if (dynamic_cast<TextNode*>(currentSelection) != NULL || dynamic_cast<ImageNode*>(currentSelection) != NULL)
+//		//{
+//		//	currentSelection->OnTextInput((unsigned short*)utf16.c_str(), utf16.length());
+//		//}
+//		else
+//		{
+//			// Nothing happened
+//		}
+//	}
+//}
 
 void Canvas::OnDropWindow(int count, const char** paths)
 {
@@ -770,13 +909,16 @@ void Canvas::OnDropWindow(int count, const char** paths)
 void Canvas::OnResizeFramebuffer(int width, int height)
 {
 	// Interface Properties
+	//viewportX = PropertyPanel::CurrentPanelWidth;	// Deprecated
 	viewportX = 0;	// We no longer consider PropertyPanel width because now we use floating panels
 	viewportY = 0;
+	//viewportW = width - PropertyPanel::CurrentPanelWidth;
 	viewportW = width;
 	viewportH = height;
 
 	// Manually Layout Things
 	decorationFrame->UpdatePosition(0, 0);
+	// dropDownButton->UpdatePosition(viewportW - 120, - 60);	// Randomly picked number... But fixed relative to right side of the window
 	informationLabel->UpdatePosition(viewportW - informationLabel->GetDimensionX() - 20, -(int)viewportH + 40);
 
 	// Update 2D Projection and View
@@ -830,6 +972,22 @@ CameraNode* Canvas::GetCamera()
 {
 	return camera;
 }
+
+// Canvas Logics
+//bool Canvas::ShouldCull(CanvasNode* node)
+//{
+//	// Behind Camera?
+//	if (ToCameraDistance(node) < 0)
+//	{
+//		return true;
+//	}
+//
+//	// Outside Camera Frustrum? -- Too complex so we will pend it later...
+//
+//	// Outside Fog Seeable Range? -- Done in Update
+//
+//	return false;
+//}
 
 void Canvas::CreateMeshNode(char* ANSIPath)
 {
@@ -906,6 +1064,15 @@ bool Canvas::CheckObjectCollision(CanvasNode* node, float cursorX, float cursorY
 	glm::vec4 rayEye = glm::inverse(camera->project) * rayClip;
 	rayEye = glm::vec4(rayEye.x, rayEye.y, -1.f, 0.f);	// Manually inverse Z
 
+	///* An example of the above statement*/
+	//float RamdonValue = 155.f;	// No used, and happen to be the same as Ze
+	//float Ze = 155.f;
+	//float ratioX = (cursorX / viewportW - 0.5) * 2;
+	//float ratioY = ((viewportH + cursorY) / viewportH - 0.5) * 2;
+	//glm::vec4 rayClip = glm::vec4(ratioX * Ze, ratioY * Ze, RamdonValue, RamdonValue);
+	//glm::vec4 rayEye = glm::inverse(camera->project) * rayClip;
+	//rayEye = glm::vec4(rayEye.x, rayEye.y, -Ze, 0.f);
+
 	glm::vec3 cameraRay = glm::normalize(glm::vec3(rayEye));	// Normalize
 	glm::vec3 rayWor = glm::vec3(inverse(camera->view) * rayEye);
 	// don't forget to normalise the vector at some point
@@ -957,6 +1124,10 @@ bool Canvas::CheckObjectCollision(CanvasNode* node, float cursorX, float cursorY
 				*distance = glm::length(camera->GetWorldPosition() - P);
 			}
 
+			// Debug
+			// worldOrigin->UpdateBuffer(camera->GetWorldPosition(), cameraRay, glm::length(camera->GetWorldPosition() - P));
+			// worldOrigin->UpdateBuffer(camera->GetWorldPosition(), P, glm::length(camera->GetWorldPosition() - P));	// Same Effect?!
+
 			return true;
 		}
 		else
@@ -972,6 +1143,15 @@ bool Canvas::CheckObjectCollision(CanvasNode* node, float cursorX, float cursorY
 	else if (dynamic_cast<Terrain*>(node))
 	{
 		// Do Collision Detection in View Space
+
+		//// Instantiate Collision For Terrrain
+		//glm::vec3 P1 = glm::vec3(0, 0, 0);
+		//glm::vec3 P2 = glm::vec3(1, 0, 0);
+		//glm::vec3 P3 = glm::vec3(0, 0, 1);
+		//// Assume No WorldTransform to our Terrain
+		//glm::vec3 V1 = P2 - P1;	// glm::normalize(P2 - P1);
+		//glm::vec3 V2 = P3 - P2;	// glm::normalize(P3 - P2);
+		//glm::vec3 N = glm::cross(V2, V1);	// glm::normalize(glm::cross(V2, V1));
 
 		// Instantiate Collision For Terrrain
 		glm::vec3 P1 = glm::vec3(0, 0, 0);
@@ -1019,6 +1199,11 @@ bool Canvas::CheckObjectCollision(CanvasNode* node, float cursorX, float cursorY
 			{
 				*distance = glm::length(cameraWorld - P);
 			}
+
+			// Debug
+			// worldOrigin->UpdateBuffer(cameraWorld, cameraRay, *distance);
+			// worldOrigin->UpdateBuffer_Line(cameraWorld, P);
+
 			return true;
 		}
 	}
@@ -1030,6 +1215,19 @@ bool Canvas::CheckObjectCollision(CanvasNode* node, float cursorX, float cursorY
 
 float Canvas::ToCameraDistance(CanvasNode* node)
 {
+	//// Calculate Node Facing
+	//// Get World Space Camera Ray
+	//glm::vec4 rayEye = glm::vec4(0.0f, 0.0f, -1.0f, 0.0f);
+	//glm::vec3 rayWor = glm::vec3(inverse(camera->view) * rayEye);
+	//// don't forget to normalise the vector at some point
+	//rayWor = glm::normalize(rayWor);
+
+	//glm::vec3 cW = camera->GetWorldPosition();
+	//glm::vec3 nW = node->GetWorldPosition();
+	////int faceCamera = glm::length(glm::cross(glm::normalize(nW), rayWor)) > 0 ? 1 : -1;	// (cZ < Tz?-1:1) // // Assume no camera rotation: so we use Z value to check whether behind camera, also facilitate in debug
+	//int faceCamera = glm::abs(glm::dot(glm::normalize(nW - cW), rayWor)) > 0.707 ? 1 : -1;	// abs(sin(Theta)) > cos(45)
+	//return glm::length(cW - nW)*faceCamera;
+
 	// Calculate Node Facing in Eye Space
 	//glm::vec3 rayEye = glm::vec3(camera->view * glm::vec4(0.0f, 0.0f, -1.0f, 0.f));	// __Debug__: Notice due to our configuration glm::vec4(0.0f, 0.0f, -1.0f, 0.f) isn't the view space vector?!
 	glm::vec3 rayEye = glm::vec3(0.0f, 0.0f, -1.0f);	// __Debug__: Notice due to our configuration glm::vec4(0.0f, 0.0f, -1.0f, 0.f) isn't the view space vector?!

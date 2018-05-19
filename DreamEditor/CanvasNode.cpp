@@ -7,6 +7,8 @@ void CanvasNode::OnMouseOver(double xpos, double ypos)
 	if (bPendingDeletion) return;
 
 	bMouseOverNotified = true;
+
+	// __Pending HighLight Object Rendering
 }
 
 // Common Interface

@@ -1,3 +1,37 @@
+/* Current Working on:
+	1. <Done>StringData abstraction; 
+	2. TextField and TextContainer and TextContainer definition and how are interface elements arranged
+	3. What should Canvas Nodes contain: make use of(e.g. embed) existing 2D Interface elements, or devise new types?
+		Node-Property Sync, and What Properties should we expose, and do we ever need a multi-line textfield? Even tab doesn't seem necessary.
+		If that is the case, the dimension of IE can be determined at initializatio time.
+	4. Approach from Cavans space, and progressively exploiting all implementation details
+		- From Loading And Data Creation and Dynamic OpenGL obejct management perspective
+		- CanvasNodes oejct definition
+	5. Application Usage and Working flow
+	6. <Done>Canvas Node Interaction with Property Panel, and More detailed function implementation
+	7. Detailed Implementation starting from GraphManager
+		- <Done>ShaderResource
+		- <Done>FontManager
+		- <Done>Interface Objects
+			- Property Panels General Implementation
+		- <In Progress>Interface Elements
+			- Robust and complete implementation
+		- <Done, Pending Test>Interface Layout
+			- Layout test and implementation
+		- <In Progress> Canvs and Canvas Nodes
+			- MeshData and MeshResource Detailed Implementation
+			- Canvas Logic and Interaction
+			- Canvas Nodes
+		- Order: 3D Renderable->Canvas Nodes->Collision Detection->Canvas
+			- ImageData and Image Resource
+			- TextNode, 3DRenderable, and Canvas Interaction
+		- Approach From Debugging and Functioning Test POint of View because Canvas interface is a little bit involved, 
+		if we could do it while debugging it would be more interesting and intuitive
+	8. Debug with 2D Interface
+		- <Current Working On> Keyboard input on TextFields on MainMenu and TextContainer in Property Panel{Pending 2 Days Finish}
+		- Then we can immediately go to deal with Canvas space 3D renderables
+*/
+
 /* Design Decisions:
 	1. Landscape camera is obviously more stylish, but a request for first person 
 	camera can be heard when thinking about dynamic scene elements. Of course we 

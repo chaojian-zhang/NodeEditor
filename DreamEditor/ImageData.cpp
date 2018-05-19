@@ -39,6 +39,8 @@ ImageData::ImageData(char* filename)
 
 	// __Debug__ This seems a huge bug of DevIL
 	// Save Information about the image
+	// imageType = ilGetInteger(IL_FORMAT_MODE);	// "Image Format" is not "Data Format"
+	// imageType = ilGetInteger(IL_TYPE_MODE);	// "Image Format" is not "Data Format"
 	imageType = IL_TYPE_UNKNOWN;
 
 	// Delete the image

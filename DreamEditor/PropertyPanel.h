@@ -10,6 +10,9 @@ public:
 	~PropertyPanel();
 
 	// Partial Interface Implementation
+	// Framebuffer and Window handler: By design we just change the viewport of each Interface, but mostly only horizontal direction, but anyway it doesn't matter
+	// even if we change vertical viewport size, since by design Interface Elements(e.g. those are Side Panel) are drawn using abs perfect drawing relative to upper 
+	// left corner  <--- NO Idea what's that talking about
 	virtual void OnResizeFramebuffer(int width, int height);
 	virtual void Render(){ backgroundImage->Render(); };
 

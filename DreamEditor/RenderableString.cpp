@@ -247,6 +247,15 @@ void RenderableString::UpdateBuffers_Area(unsigned short* textContent, unsigned 
 			//drawPenY -= common->lineHeight * fontScale;
 			//drawPenX = 0;
 
+			//// Enter, eventhough not a character, still need to be rendered, so it is necessary to give it a mesh shape
+			//vertices[i * 6 + 0]
+			//	= vertices[i * 6 + 3]
+			//	= vertices[i * 6 + 1]
+			//	= vertices[i * 6 + 2]
+			//	= vertices[i * 6 + 4]
+			//	= vertices[i * 6 + 5]
+			//	= Vector3f{ 0, 0, 0 };
+
 			// Ignore, this normally shoudn't appear
 			vertices[i * 6 + 0]
 				= vertices[i * 6 + 3]

@@ -4,6 +4,14 @@
 #include "Constants.h"
 #include "Colors.h"
 #include "SystemWrapper.h"
+
+// Position Cursors
+//unsigned int lineNumber;
+//float linePixelWidth;
+//GetLineInfoAt(numChars, NULL, &lineNumber, &linePixelWidth);
+//cursor0->UpdateLocation(XPadding + CornerSize + linePixelWidth, lineNumber * GraphManager::font->common->lineHeight * fontScale, 0);
+//cursor1->UpdateLocation(XPadding + CornerSize + linePixelWidth, lineNumber * GraphManager::font->common->lineHeight * fontScale, 0);
+
 float TextContainer::highlightColor[3] = {0.2f, 0.6f, 1.0f};
 
 TextContainer::TextContainer(Interface* inParent, unsigned short* initialString, unsigned int numChars,
@@ -57,6 +65,7 @@ TextContainer::TextContainer(Interface* inParent, unsigned short* initialString,
 	cursorHighlight->UpdateProperty(0.5, NULL);
 
 	// Update fieldWidth and Height
+	// __Deebug__ There seems a bug here in the calculation
 	if (bSingleLine&& !bFixWidth)// Multi-Line must be fixed width
 	{
 		boundaryWidth = textRenderable->GetStringWidth();
@@ -108,6 +117,7 @@ void TextContainer::AddCharacters(unsigned short* string, unsigned int numChars)
 	}
 
 	// Update Cursor Position
+	// __Pending add support for field scroll and clamping
 	cursorPosition0 = cursorPosition1 = Mini(cursorPosition0, cursorPosition1) + numChars;
 
 	// Update Renderables

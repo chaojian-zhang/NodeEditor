@@ -43,3 +43,26 @@ unsigned int GetStringLength(unsigned short* string)
 	}
 
 }
+
+
+//bool CompareStrings(unsigned short* string1, unsigned short* string2)
+//{
+//	if (string1 == string2)
+//	{
+//		return true;
+//	}
+//
+//	unsigned int stringLength = GetStringLength(string1);
+//	if (stringLength != GetStringLength(string2))
+//	{
+//		return false;
+//	}
+//
+//	for (unsigned int i = 0; i < stringLength; i++)
+//	{
+//		if (string1[i] != string2[i])
+//		{
+//			return false;
+//		}
+//	}
+//}

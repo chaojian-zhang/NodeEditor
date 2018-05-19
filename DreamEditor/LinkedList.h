@@ -21,6 +21,7 @@ public:
 	void Add(void* data);	// Allocate space for the nodes; also put current to the first if its NULL
 	unsigned int Length();	// Return total length of list
 	void Clear();	// Clear all existing nodes
+	// unsigned int Index();	// Count the index of current pointer
 
 	// Selection Related Functions: return the data pointer
 	void* First();	// Select First Node, return data in first node
@@ -31,6 +32,9 @@ public:
 	void* Delete(unsigned int index);	// Delete the node, return the data the node was holding, notice we do not delete the data, just the node
 	// If index doesn't exist, return NULL
 
+	// Utilities
+	// void DeleteDatas();	// User can delete data themselves, or call this function to save typing time
+	// Not safe to delete a void pointer since destructor won't be called
 protected:
 	unsigned int length = 0;	// Current Number of elements
 	ListNode* first = NULL;

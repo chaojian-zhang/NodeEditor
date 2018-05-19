@@ -78,14 +78,19 @@ void Sun::UpdateSun(float sunTiming)
 	static const float SunColor_LightCream[3] = { 0.862f, 0.825f, 0.760f};	// Noon; AfterMidDay
 	static const float SunColor_NotPureWhite[3] = { 0.825f, 0.825f, 0.825f};	// MidDay
 	static const float SunColor_SunRed[3] = { 0.674f, 0.337f, 0.349f };	// Sunset
+	//static const float MoonColor_DimOrgange[3] = { 1.0f, 0.95f, 0.85f };	// Night
 	static const float MoonColor_DimOrgange[3] = { 0.292f, 0.243f, 0.188f};
 	// Sky: Here is describes the ambient light produced by the sky, not the actual color of the sky since they differ a lot
 	// Also as a rule of thumn , the value/strength of the those colors shouldn't be over 50%
+	//static const float SkyColor_ReddishOrange[3] = { 0.862f, 0.324f, 0.225f };	// Reddish Orange(0.862, 0.324, 0.225)	// No such sky ambient color exist
+	//static const float SkyColor_LightBlue[3] = { 0.204f, 0.665f, 1.0f };	// LightBlue(0.204, 0.665, 1.0): Too strong, and too saturatied, this only happens on non-cloudy day
 	static const float SkyColor_LightBlue[3] = { 0.292f, 0.340f, 0.383f};
 	static const float SkyColor_VeryLightBlue[3] = { 0.274f, 0.335f, 0.361f};	// Very Light Blue
 	static const float SkyColor_NotPureWhite[3] = { 0.367f, 0.403f, 0.408f};	// MidDay
 	static const float SkyColor_PurpleBlue[3] = { 0.269f, 0.366f, 0.421f};	// Sunset
+//	static const float NightColor_LightBlue[3] = { 0.611f, 0.743f, 0.862f };	// Night
 	static const float NightColor_LightBlue[3] = { 0.131f, 0.160f, 0.185f};
+	//static const float NightColor_LightBlue[3] = { 0.281f, 0.304f, 0.323f};
 
 	// Angle in radians
 	double  radians = sunTiming * 3.14159 / 180;
@@ -168,6 +173,34 @@ void Sun::UpdateSun(float sunTiming)
 		skyFillColor[2] = NightColor_LightBlue[2];
 	}
 
+	// Update Sun Direction: The direction of the sun in world space is the inverse of the location
+	//sunDirection[0] = -sunLocation[0];
+	//sunDirection[1] = -sunLocation[1];
+	//sunDirection[2] = -sunLocation[2];
+
+	//// Update Matrices: Notice that sun as a sphere doesn't need to ratote, but sun as a camera does need to rotate in order to see us
+	// Version1
+	//float X = sunLocation[0], Y = sunLocation[1], Z = sunLocation[2];
+	//glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::atan(Z / Y), glm::vec3(1, 0, 0));
+	//rotation = glm::rotate(rotation, glm::atan(X / Z), glm::vec3(0, 1, 0));
+	//rotation = glm::rotate(rotation, glm::atan(Y / Z), glm::vec3(0, 0, 1));
+
+	//sunView = glm::inverse(glm::translate(glm::mat4(1), glm::vec3(X, Y, Z))*rotation);
+	//sunProjection = glm::ortho(-100.f, 100.f, -100.f, 100.f, 500.f, 4000.f);	// Pending testing
+
+	// Version 2_Debug
+	//glm::vec3 camera = canvas->GetCamera()->GetWorldPosition();
+	//float X = 5 + camera.x, Y = 20, Z = 5 + camera.z;
+	//glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::atan(X / Z), glm::vec3(0, 1, 0));	// First rotate around X, then Y, never need to rotate around Z
+	////rotation = glm::rotate(rotation, -glm::atan(Z / Y), glm::vec3(1, 0, 0));
+	//rotation = glm::rotate(rotation, -glm::atan(Y / Z), glm::vec3(1, 0, 0));
+	////rotation = glm::rotate(rotation, glm::atan(Y / Z), glm::vec3(0, 0, 1));
+	//sunView = glm::inverse(glm::translate(glm::mat4(1), glm::vec3(X, Y, Z))*rotation);
+	//float relativeRatio = (float)(canvas->viewportH) / (float)(canvas->viewportW);
+	//float sightWidth = canvas->GetSightDepth();
+	//sunProjection = glm::ortho(-sightWidth, sightWidth, sightWidth * (-relativeRatio), sightWidth * relativeRatio, /*500.f*/0.f, 4000.f);
+	////sunProjection = glm::perspective(/*FOV_degree*/45.f, (float)(canvas->viewportW) / (canvas->viewportH), 0.1f, 500.f);
+
 	// Version3
 	float X = sunLocation[0], Y = sunLocation[1], Z = sunLocation[2];	// The location of the sun doesn't matter since we are in ortho, the only thing matters is the direction
 	glm::vec3 camera = canvas->GetCamera()->GetWorldPosition();
@@ -187,6 +220,11 @@ void Sun::UpdateSun(float sunTiming)
 	// http://stackoverflow.com/questions/13199126/find-opengl-rotation-matrix-for-a-plane-given-the-normal-vector-after-the-rotat
 	// Search KEy word: How to get a rotation matrix normal to a vector
 }
+
+// Debug Test:
+// 1. First we actually look through the sun to see what it can see
+// 2. Then do the actual shadow rendering and debug
+// 3. If necessary then display a shadow map preview but since we have done 1 it is not necessary any more
 
 // Alignment:
 void* Sun::operator new (size_t size)

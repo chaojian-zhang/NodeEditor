@@ -39,6 +39,8 @@ AboutPopupScreen::AboutPopupScreen()
 	layout.Dispatch();
 
 	// Set up correct viewport size
+	//viewportW = layout.layoutWidth + AboutPop_HorizontalPadding * 2;
+	//viewportH = layout.layoutHeight + AboutPop_VerticalPadding * 2;
 	viewportW = areaWidth;
 	viewportH = areaHeight;
 
@@ -47,7 +49,9 @@ AboutPopupScreen::AboutPopupScreen()
 	screenTexImage = MaterialTextures::GetTexture(SystemFunctions::GetExecutableDirectoryPath(ApplicationPath::IconImageFilePath, pathBuffer));
 	backgroundImage = new Panel(areaWidth, areaHeight, screenTexCoords, screenTexImage, this);
 
-	// Iterate and adjust to avoid overlaping each other
+	// Offset Z Height a bit to avoid being overlaped by other interfaces.
+	//backgroundRect->OffsetPosition(0, 0, 0.2);
+	// Iterate and adjust
 	temp = (TextLabel*)(labels.First());
 	while (temp)
 	{

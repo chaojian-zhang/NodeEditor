@@ -39,6 +39,13 @@ void RenderableDebugRay::UpdateBuffer(glm::vec3 origin, glm::vec3 direction, flo
 		origin.x + direction.x * length, origin.y + direction.y * length, origin.z + direction.z * length	// Do not add 0.05 here
 	};
 
+
+	//float vertexData[6]=
+	//{
+	//	0, 5, 0,
+	//	1, 6, 0
+	//};
+
 	// Initialize OpenGL obejcts
 	glBindVertexArray(VAO);
 	// Generate Vertex Buffer

@@ -15,6 +15,18 @@ float TextNode::MaxHeight = 1.8f;
 unsigned int TextNode::FontSize = 16U;
 float TextNode::QuoteCornerSize = 0.1f;
 float TextNode::FieldWidth = 1.5f;
+//float TextNode::TextFrameColor[3] = { 0.788f, 0.788f, 0.788f };
+//float TextNode::TextFrameHoverColor[3] = { 0.f, 0.48f, 0.769f };
+//float TextNode::TextBackgroundColor[3] = { 0.23f, 0.23f, 0.23f };
+//float TextNode::SurfaceBorderColor[3] = { 0.788f, 0.788f, 0.788f };
+//float TextNode::SurfaceColor[3] = { 0.407f, 0.407f, 0.407f };
+
+//float TextNode::TextFrameColor[3] = { 0.233f, 0.233f, 0.233f };
+//float TextNode::TextFrameHoverColor[3] = { 0.f, 0.48f, 0.769f };
+////float TextNode::TextBackgroundColor[3] = { 0.366f, 0.366f, 0.366f };
+//float TextNode::TextBackgroundColor[3] = { 0.f, 0.f, 0.f};
+//float TextNode::SurfaceBorderColor[3] = { 0.f, 0.f, 0.f };
+//float TextNode::SurfaceColor[3] = { 0.412f, 0.412f, 0.412f };
 
 float TextNode::TextFrameColor[3] = { 0.f, 0.184f, 0.02f};
 float TextNode::TextFrameHoverColor[3] = { 0.f, 0.48f, 0.769f };
@@ -116,6 +128,9 @@ void TextNode::Update()
 
 		// Update Node Elements
 		float textAreaCornerSize = title->GetBoundaryHeight() / 4;
+		//titleField->UpdateBuffer(title->GetBoundaryWidth(), title->GetBoundaryHeight()*1.02, textAreaCornerSize);
+		//contentField->UpdateBuffer(content->GetBoundaryWidth(), height - YPadding * 3 - title->GetBoundaryHeight()/*Do not use content->GetBoundaryHeight(), since for MinHeight case those two doesn't equal*/, textAreaCornerSize);
+		//frame->UpdateBuffer(width, height, QuoteCornerSize);
 		titleField->UpdateBuffer(currentWidth - XPadding * 2, title->GetBoundaryHeight()*1.02, textAreaCornerSize);
 		contentField->UpdateBuffer(currentWidth - XPadding * 2, currentHeight - YPadding * 3 - title->GetBoundaryHeight(), textAreaCornerSize);
 		frame->UpdateBuffer(currentWidth, currentHeight, QuoteCornerSize);
@@ -151,10 +166,22 @@ void TextNode::WakeUp()
 	if (bPendingDeletion)	return;
 	
 	// Create Title First and Get Dimensions
+	//unsigned short* debugTitleText = (unsigned short*)L"Debug Title: This is a very long debug title to make sure autoFitting and MouseHover is working correctly";
+	//title = new TextContainer(GraphManager::canvas, debugTitleText, GetStringLength(debugTitleText), FontSize, Color::DefaultTextColor, 0, 0, true, true, true, titleData);
+	// title = new TextContainer(GraphManager::canvas, (unsigned short*)L"Debug Title", 11, FontSize, Color::DefaultTextColor, 0, 0, true, true, true, titleData);
 	title = new TextContainer(GraphManager::canvas, titleData->GetString(), titleData->GetStringNumChars(), FontSize, Color::DefaultTextColor, 0, 0, true, true, true, false, false, titleData);
 	width = title->GetBoundaryWidth() > MinWidth ? title->GetBoundaryWidth() : MinWidth;
 
 	// Create Content
+	// unsigned short* debugConentText = (unsigned short*)L"Debug Content: It was once said that there was a dragon living in the deepest ground¡£ÔÚºÜÓÐºÜ¾ÃÒÔÇ°ÊÀ½çÉÏÖ»ÓÐÊ¯Í·Ã»ÓÐÊ÷¡£";
+//	unsigned short* debugConentText = (unsigned short*)
+//L"¤à¤«¤·¡¢ ¤à¤«¤·¡¢ ¤¢¤ë ¤È¤³¤í ¤Ë\n\
+//¤ª¤¸¤¤¤µ¤ó ¤È ¤ª¤Ð¤¢¤µ¤ó ¤¬ ¤¤¤Þ¤·¤¿¡£\n\
+//¤ª¤¸¤¤¤µ¤ó ¤¬ É½£¨¤ä¤Þ£© ¤Ø Ä¾£¨¤­£© ¤ò ¤­¤ê ¤Ë ¤¤¤±¤Ð¡¢\n¤ª¤Ð¤¢¤µ¤ó ¤Ï ´¨£¨¤«¤ï£© ¤Ø ¤»¤ó¤¿¤¯ ¤Ë ¤Ç¤«¤±¤Þ¤¹¡£\n\
+//¡¸¤ª¤¸¤¤¤µ¤ó¡¢ ¤Ï¤è¤¦ ¤â¤É¤Ã¤Æ ¤­¤Ê¤µ¤ì¡£¡¹\n¡¸¤ª¤Ð¤¢¤µ¤ó ¤â ¤­ ¤ò ¤Ä¤±¤Æ ¤Ê¡£¡¹	\n\
+//¤Þ¤¤ÈÕ£¨¤Ë¤Á£© ¤ä¤µ¤·¤¯ ¤¤¤¤ ¤¢¤Ã¤Æ ¤Ç¤«¤±¤Þ¤¹¡£";
+//	content = new TextContainer(GraphManager::canvas, debugConentText, GetStringLength(debugConentText), FontSize, Color::DefaultTextColor, width, 0, false, true, true, contentData);
+	// content = new TextContainer(GraphManager::canvas, (unsigned short*)L"Debug Content", 13, FontSize, Color::DefaultTextColor, width, 0, false, true, true, contentData);
 	content = new TextContainer(GraphManager::canvas, contentData->GetString(), contentData->GetStringNumChars(), FontSize, Color::DefaultTextColor, width, 0, false, true, true, true, false, contentData);
 	float elementsHeight = title->GetBoundaryHeight() + YPadding*3 + content->GetBoundaryHeight();
 	currentHeight = height = elementsHeight > MinHeight ? elementsHeight : MinHeight;
@@ -168,6 +195,8 @@ void TextNode::WakeUp()
 
 	// Update Final Width and Height
 	currentWidth = width = width + XPadding * 2;
+//	height = (height + YPadding * 2)*1.26;	// Quote Symbol
+	// We didn't do this so notice that TextNode's height doesn't take its quote symbol into account
 
 	// Place Renderables
 	Translation(Tx, Ty, Tz);
@@ -182,7 +211,8 @@ void TextNode::WakeUp()
 
 void TextNode::FallAsleep()
 {
-	CanvasNode::FallAsleep();
+	if (bSleep) return;
+	bSleep = true;
 
 	if (bPendingDeletion)	return;
 
@@ -246,6 +276,7 @@ void TextNode::OnMouseOver(double xpos, double ypos)
 	{
 		GraphManager::SetCursorIcon(CursorIcon::TextCursor);
 		contentField->UpdateProperty(true, TextFrameColor, TextBackgroundColor);
+		//titleField->UpdateProperty(TextFrameHoverColor);
 		titleField->UpdateProperty(true, TextFrameColor, TextBackgroundColor);
 
 		// Also update TextContainer if necessary
@@ -293,10 +324,18 @@ void TextNode::OnKeyboardButton(int key, int scancode, int action, int mods)
 	// Summon Active TextContainers to do the work
 	if (currentSelection)
 	{
-		currentSelection->OnKeyboardButton(key, scancode, action, mods);
+		// If we are Tabbing in Title bar, then switch focus to 
+		//if (currentSelection == title && key == GLFW_KEY_TAB && action == GLFW_PRESS)
+		//{
+		//	currentSelection = content;
+		//}
+		//else
+		//{
+			currentSelection->OnKeyboardButton(key, scancode, action, mods);
 
-		// Since the size of the TextContainer might change, we need to update size of drawings
-		AnimatedResize();
+			// Since the size of the TextContainer might change, we need to update size of drawings
+			AnimatedResize();
+		//}
 	}
 	else if (key == GLFW_KEY_DELETE && action == GLFW_PRESS)
 	{
@@ -353,6 +392,8 @@ void TextNode::Export()
 
 void TextNode::AnimatedResize()
 {
+	// __Debug__ Might want to add an animation to make the transition smooth with some dragging effect
+
 	// Logic: if title width is bigger than previous state, resize width of all elements; if height of content is bigger than previous case, resize all related elements
 	// Lock flexible resizing when hit MaxWidth or MaxHeight
 

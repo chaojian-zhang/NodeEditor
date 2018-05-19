@@ -1,10 +1,14 @@
 #pragma once
 #include "Interface.h"
 #include "Button.h"
+#include "SearchField.h"
 #include "Panel.h"
 #include "FileMenuPopupMenu.h"
 #include "WindowMenuPopupMenu.h"
 #include "HelpMenuPopupMenu.h"
+
+// Debug_Temp
+#include "TextBox.h"
 
 class MainMenu : public Interface
 {
@@ -47,6 +51,11 @@ private:
 	Panel* background;
 	Panel* midground;
 	Panel* foreground;
+	// Might also add a frame that doesn't rotate with camera
+	// Panel* viewFrame;
+	// StandAloneIcon* appIcon; // Blender-like Application Information presentation, icon; StandaloneIcon is not implemented because for the most cases icon imageQuad renderable comes with specific interface elements, i.e. not need to provide with a stand along one
+	// TextContainer* appInfo;	// Blender-like Application Information presentation, e.g. Application Name, current version
+	// This can also be included in About popup screen
 
 	// Important Referenced Objects
 	FileMenuPopupMenu* filePopup;

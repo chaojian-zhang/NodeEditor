@@ -128,6 +128,15 @@ FontManager::FontManager()
 			cout << "[Error]Chracter Codepoint out of range! At " << __LINE__ << endl; 	// __DEBUG__: Require better solution
 		}
 	}
+	// Debug
+	/*
+	wchar_t chineseTest[] = L"这不是英文";
+	for (int i = 0; i < wcslen(chineseTest); i++)
+	{
+	cout << "The Character Codename " << charCodes[chineseTest[i]]->id
+	<< " is in page: " << (int)charCodes[chineseTest[i]]->page
+	<< ". Check its Unicode UTF16 encoding whether match." << endl;
+	}*/
 
 	// Didn't read kerning pairs because we do not use them
 

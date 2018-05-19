@@ -60,6 +60,7 @@ public:
 	static void OnDropWindow(GLFWwindow* window, int count, const char** paths);
 	// Window and Framebuffer
 	static void OnResizeFramebuffer(GLFWwindow *window, int width, int height);	// Dispath each interface to adjust their viewport position
+	// static void OnResizeWindow(GLFWwindow *window, int w_width, int w_height);	// May want to record window width and height here->Record for Framebuffer size // Not Used
 	// openGL Error Callabck
 	static void APIENTRY OnOpenglError(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam);
 
@@ -71,6 +72,9 @@ public:
 	static void ReleaseCursor();
 
 	// Files Interaction
+	//static bool IsImageFile(unsigned short* path, unsigned int numChars);	// U16
+	//static bool IsMeshSpecFile(unsigned short* path, unsigned int numChars);	// U16
+	//static bool IsDreamMapFile(unsigned short* path, unsigned int numChars);	// U16
 	static bool IsImageFile(char* path);	// ANSI
 	static bool IsMeshSpecFile(char* path);	// ANSI
 	static bool IsDreamMapFile(char* path);	// ANSI
@@ -195,4 +199,6 @@ private:
 	static bool NotifyMouseButton(LinkedList* elementsList, Interface* parent, int button, int action, int mods, double xpos, double ypos);	// Return whether any interface element is clicked; Useful for canvas
 	static void NotifyDropWindow(LinkedList* elementsList, Interface* parent, int count, const char** paths, double xpos, double ypos);
 	static bool CheckFallIn(Interface* check, double xpos, double ypos);
+	// static void GetMouseInterfaceLocation(Interface* parent, double* xpos, double* ypos);	// Return GLFW Window spapce cursor converted to Interface Space Viewport OpenGL Second
+	// Since this function is called a lot, it is better to manually inline it instead of using a function to avoid penalty
 };

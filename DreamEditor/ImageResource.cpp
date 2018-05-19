@@ -37,3 +37,9 @@ void ImageResource::AddImage(ImageData* image)
 {
 	images.Add(image);
 }
+
+//unsigned int ImageResource::AddImage(char* filename)
+//{
+//	images.Add(new ImageData(filename));
+//	return images.Length();	// Why Not -1?
+//}

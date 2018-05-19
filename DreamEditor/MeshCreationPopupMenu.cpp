@@ -6,6 +6,8 @@
 MeshCreationPopupMenu::MeshCreationPopupMenu(GraphManager* g)
 	:graph(g)
 {
+	// __Pending: Add icons to the buttons
+
 	// Create Interface Elements
 	// A Label that indicates the purpose of the Screen
 	addMeshLabel = new TextLabel((unsigned short*)Interface_MeshCreationPop_AddMesh, false, Color::LightGreyTextColor, this);

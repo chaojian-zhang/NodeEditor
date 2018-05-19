@@ -13,6 +13,7 @@ ShaderResource::ShaderResource()
 {
 	// Shader Programs
 	FILE* f = fopen(ApplicationPath::PrecompiledProgramFilePath, "rb");	// Open in Read mode will fail if the file doesn't exist, this is what we expect
+	// __Pending: Add support for PhongShadingProgram
 	for (int i = 0; i < NumberOfPrograms; i++)
 	{
 		// Generate Program Objects
@@ -89,6 +90,7 @@ ShaderResource::ShaderResource()
 	if (f != NULL) bCached = true;
 
 	// Icon Map
+	// _Debug_: Notice CWD and Program DIr
 	char pathBuffer[MAX_PATH];
 	iconMap = MaterialTextures::GetTexture(SystemFunctions::GetExecutableDirectoryPath(ApplicationPath::IconImageFilePath, pathBuffer));
 }
@@ -172,3 +174,9 @@ unsigned int ShaderResource::GetShaderSource(unsigned int index, unsigned int te
 
 	return fileSize;
 }
+
+// Classical Bug
+//GLint vSourceLength = strlen(Shaders::vertexShaders[i]);
+//GLint fSourceLength = strlen(Shaders::fragmentShaders[1]);
+//glShaderSource(vertexShader, 1, &Shaders::vertexShaders[i], &vSourceLength);
+//glShaderSource(fragmentShader, 1, &Shaders::fragmentShaders[1], &fSourceLength);

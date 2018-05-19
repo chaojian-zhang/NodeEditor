@@ -49,6 +49,9 @@
     <Filter Include="Source Files\ApplicationManagement\Utilities">
       <UniqueIdentifier>{28bb9e07-9bf6-40b5-b068-b5162b508212}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CanvasNodes\NodeTypes\TextElements">
+      <UniqueIdentifier>{83ac3446-e2bb-477b-82ea-fdf9de337316}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\InterfaceElements\DataTypes">
       <UniqueIdentifier>{c1d66d57-5356-48a4-b10b-0308b5ff2cd9}</UniqueIdentifier>
     </Filter>
@@ -126,10 +129,16 @@
     <ClInclude Include="TextNode.h">
       <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Renderable3DRegionalMark.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchField.h">
       <Filter>Source Files\InterfaceElements</Filter>
     </ClInclude>
     <ClInclude Include="FileMenuPopupMenu.h">
@@ -168,6 +177,9 @@
     <ClInclude Include="LinkedList.h">
       <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
     </ClInclude>
+    <ClInclude Include="DivisionLine.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
     <ClInclude Include="HelpMenuPopupMenu.h">
       <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
     </ClInclude>
@@ -180,14 +192,32 @@
     <ClInclude Include="MathElegent.h">
       <Filter>Source Files\ApplicationManagement\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="DropDownButton.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
     <ClInclude Include="PopupMenu.h">
       <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="PropertyPanel.h">
       <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="TextField3D.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes\TextElements</Filter>
+    </ClInclude>
+    <ClInclude Include="TextArea3D.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes\TextElements</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox3D.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes\TextElements</Filter>
+    </ClInclude>
     <ClInclude Include="TerrainNode.h">
       <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable3DTerrain.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
     </ClInclude>
     <ClInclude Include="RenderableDebugRay.h">
       <Filter>Source Files\RenderPrimitives</Filter>
@@ -273,13 +303,28 @@
     <ClInclude Include="Sun.h">
       <Filter>Source Files\RenderPrimitives\RenderingEntities</Filter>
     </ClInclude>
+    <ClInclude Include="SingleImage.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
     <ClInclude Include="CanvasNodeSortedLinkedList.h">
       <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="AnywhereDoor.h">
+      <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
     </ClInclude>
     <ClInclude Include="GlobalMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCursorHighlight.h">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="MapEditor.h">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMap.h">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCirclesInstance.h">
       <Filter>Source Files\RenderPrimitives</Filter>
     </ClInclude>
     <ClInclude Include="Locales.h">
@@ -356,6 +401,12 @@
     <ClCompile Include="StringData.cpp">
       <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
     </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchField.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
     <ClCompile Include="Interface.cpp">
       <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
     </ClCompile>
@@ -403,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="CameraNode.cpp">
       <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable3DTerrain.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
     </ClCompile>
     <ClCompile Include="TerrainNode.cpp">
       <Filter>Source Files\CanvasNodes\NodeTypes</Filter>
@@ -455,6 +509,9 @@
     <ClCompile Include="Attribute.cpp">
       <Filter>Source Files\ApplicationManagement\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="TestSource.cpp">
+      <Filter>Source Files\ApplicationManagement\Main</Filter>
+    </ClCompile>
     <ClCompile Include="Hash.cpp">
       <Filter>Source Files\ApplicationManagement\Main</Filter>
     </ClCompile>
@@ -491,10 +548,22 @@
     <ClCompile Include="Sun.cpp">
       <Filter>Source Files\RenderPrimitives\RenderingEntities</Filter>
     </ClCompile>
+    <ClCompile Include="SingleImage.cpp">
+      <Filter>Source Files\InterfaceElements</Filter>
+    </ClCompile>
     <ClCompile Include="CanvasNodeSortedLinkedList.cpp">
       <Filter>Source Files\ApplicationManagement\DataTypes</Filter>
     </ClCompile>
+    <ClCompile Include="AnywhereDoor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="RenderableCursorHighlight.cpp">
+      <Filter>Source Files\RenderPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="MapEditor.cpp">
+      <Filter>Source Files\ApplicationManagement\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableCirclesInstance.cpp">
       <Filter>Source Files\RenderPrimitives</Filter>
     </ClCompile>
   </ItemGroup>

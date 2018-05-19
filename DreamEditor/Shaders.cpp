@@ -8,6 +8,7 @@ char* ShaderPath::Programs[NumberOfPrograms * 2] =
 	"Data\\Shaders\\SimpleTextureProgramVertex.shader",
 	"Data\\Shaders\\PhongShadingProgramVertex.shader",
 	"Data\\Shaders\\SEMRoughSpecularVertex.shader",
+	//"Data\\Shaders\\InstancedCirclesVertex.shader",
 
 	// Fragment Shaders
 	"Data\\Shaders\\TextProgramFragment.shader",
@@ -15,4 +16,5 @@ char* ShaderPath::Programs[NumberOfPrograms * 2] =
 	"Data\\Shaders\\SimpleTextureProgramFragment.shader",
 	"Data\\Shaders\\PhongShadingProgramFragment.shader",
 	"Data\\Shaders\\SEMRoughSpecularFragment.shader",
+	//"Data\\Shaders\\InstancedCirclesFragment.shader"
 };

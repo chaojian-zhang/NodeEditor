@@ -170,5 +170,6 @@ bool Attribute::StringToBool(char* string, unsigned int size)
 {
 	char buffer[64] = { 0 };
 	memcpy(buffer, string, size);
-	return strstr(string, "true");
+	// return strstr(string, "true");
+	return strstr(buffer, "true");
 }

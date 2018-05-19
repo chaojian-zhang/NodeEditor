@@ -392,6 +392,39 @@ void GraphManager::OnKeyboardButton(GLFWwindow* window, int key, int scancode, i
 		Save();
 		canvas->UpdateInformationLabelText((unsigned short*)Canvas_Information_Save);
 	}
+
+	//else if (key == GLFW_KEY_F11 && action == GLFW_PRESS && (mods & GLFW_MOD_ALT))
+	//{
+	//	// Comment: In current version of GLFW there is no easy way to toggle fullscreen; Unless create initially as fullscreen
+	//	// And we cannot reliably destroy current window since OpenGL context might be lost
+	//	// Might be supported in GLFW 3.2
+
+	//	// Toggle Imersive Style Full Screen
+	//	bFullscreen = !bFullscreen;
+
+	//	if (bFullscreen) {
+	//		// Set window size for "fullscreen windowed" mode to the desktop resolution.
+	//		glfwSetWindowSize(window, desktopWidth, desktopHeight-1);
+	//		// Move window to the upper left corner.
+	//		glfwSetWindowPos(window, 0, 0);
+	//	}
+	//	else {
+	//		// Use start-up values for "windowed" mode.
+	//		glfwSetWindowSize(window, 1024, 768);
+	//		glfwSetWindowPos(window, 512, 384);
+	//	}
+
+	//	// Credit:http://gamedev.stackexchange.com/questions/38620/toggle-fullscreen-at-runtime, although our version is quite different
+	//	// Or a more complex way: http://www.java-gaming.org/index.php?topic=34882.0
+	//	/*
+	//		long newWindow = glfwCreateWindow(w, h, title, glfwGetPrimaryMonitor(), window);
+	//		glfwDestroyWindow(window);
+	//		window = newWindow;
+	//		// setup new window (callbacks, make context current and init GL state, etc)
+	//	*/
+
+	//}
+
 	else if (key == GLFW_KEY_F10 && action == GLFW_PRESS && (mods & GLFW_MOD_ALT))
 	{
 		// Toggle Hide Menus
@@ -745,6 +778,66 @@ void GraphManager::FillWithCurrentTime(Time* timeData)
 	timeData->hour = timeInfo->tm_hour;
 }
 
+//bool GraphManager::IsImageFile(unsigned short* path, unsigned int numChars)
+//{
+//	// Validate whether the filename is recofnized as legal Image Files
+//	// Legal File Names - filename Ending with (Limited Upper and Lower Case): .png .jpg .bmp
+//	// We did it this way to keep the program portable and doesn't rely on STDLIB wstring functions
+//
+//	// Check Only the last 3 characters
+//
+//	// Make a copy since we shouldn't maipulate on input string
+//	unsigned short suffix[4] = { 0 };
+//
+//	// Extract Word
+//	unsigned int length = GetStringLength(path);
+//	for (unsigned int i = 0; i < 3; i++)
+//	{
+//		suffix[3 -1 - i] = path[length -1 - i];
+//	}
+//
+//	// Compare with Existing Know File Suffixes
+//	if (CompareStrings(suffix, (unsigned short*)L"PNG")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"JPG")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"BMP")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"png")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"jpg")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"bmp")){ return true; }
+//	else{ return false; }
+//}
+//bool GraphManager::IsMeshSpecFile(unsigned short* path, unsigned int numChars)
+//{
+//	// Recognized File Format: .ms
+//
+//	// Make a copy since we shouldn't maipulate on input string
+//	unsigned short suffix[4] = { 0 };
+//
+//	// Extract Word
+//	unsigned int length = GetStringLength(path);
+//	for (unsigned int i = 0; i < 3; i++)
+//	{
+//		suffix[3 - 1 - i] = path[length - 1 - i];
+//	}
+//
+//	// Compare with Existing Know File Suffixes
+//	if (CompareStrings(suffix, (unsigned short*)L"MS")){ return true; }
+//	else if (CompareStrings(suffix, (unsigned short*)L"ms")){ return true; }
+//	else{ return false; }
+//}
+//bool GraphManager::IsDreamMapFile(unsigned short* path, unsigned int numChars)
+//{
+//	int size = SystemFunctions::U16ToANSI(path, numChars, NULL, NULL);
+//
+//	char* ANSIPath = (char*)malloc(size + 2);	// Assume ANSI use two bytes for NULL
+//	SystemFunctions::U16ToANSI(path, numChars, ANSIPath, size);
+//	ANSIPath[size] = 0;
+//	ANSIPath[size + 1] = 0;
+//
+//	bool result = CheckFilename(ANSIPath);
+//	delete ANSIPath;
+//
+//	return result;
+//}
 bool GraphManager::IsImageFile(char* path)	// ANSI
 {
 	// Validate whether the filename is recofnized as legal Mesh Spec files
@@ -852,6 +945,24 @@ void GraphManager::Render()
 	// For 2D Elements rendering, disable depth test
 	glDisable(GL_DEPTH_TEST);
 
+	// Second Render Side Panel Interface
+	//if (currentPropertyPanel != NULL)	// Can be null if we are hiding(can be null if nothing is selected)
+	//{
+	//	glViewport(currentPropertyPanel->viewportX, currentPropertyPanel->viewportY, 
+	//		currentPropertyPanel->viewportW, currentPropertyPanel->viewportH);
+	//	currentPropertyPanel->Render();
+	//}
+	//else
+	//{
+	//	glViewport(docPanel->viewportX, docPanel->viewportY, docPanel->viewportW, docPanel->viewportH);
+	//	docPanel->Render();
+	//}	// Deprecated now we are using floating panels
+
+	// Render all the panels
+	// But I suddenly realized that render all panels in a tilted floating manner isn't possible due to our design of viewport constriant: we 
+	//	cannot define a non-rectangular viewport, and InterfaceElements rely on such an Viewport to be correctly rendered. Thus no rotation is
+	//	expected in our current design
+
 	// Render only the active panel
 	if (mainMenu->bHidden == false)	// If MainMenu is hidden, meaning we should be hidden as well
 	{
@@ -868,6 +979,7 @@ void GraphManager::Render()
 				currentPropertyPanel->Transparency(animationScale);
 
 				// Do movement animation, also render the property panel
+				//viewportX + currentPropertyPanel->viewportW * (1 - animationScale)	// Although this effect is cool, but not what we wanted
 				glViewport(currentPropertyPanel->viewportX - currentPropertyPanel->viewportW * (1 - animationScale), currentPropertyPanel->viewportY, currentPropertyPanel->viewportW, currentPropertyPanel->viewportH);
 				currentPropertyPanel->Render();
 
@@ -1110,6 +1222,9 @@ void GraphManager::InitializeInterface()
 void GraphManager::PostInitializeInterface()
 {
 	// Post some interface initialization here to overcome cross reference order: e.g. FileLoading would require canvas to be initialized while meshResource empty, however PopupMenu would require meshResource be complete
+
+	// Complete All mesh spec files searching and registering
+	// meshResource->PostLoad();	// Deprecated: We will not automatically search for more
 
 	// Create Special Display Interfaces
 	shortcutsScreen = new ShortcutsPopupScreen();

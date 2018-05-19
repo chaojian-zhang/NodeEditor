@@ -36,6 +36,21 @@ unsigned int LinkedList::Length()
 	return length;
 }
 
+/* This function is too expensive, User of LinkedList is recommneded to simulate one himself if needed
+unsigned int LinkedList::Index()
+{
+	unsigned int index = 0;
+
+	ListNode* temp = first;
+	while (current!= temp)
+	{
+		temp = temp->next;
+		index++;
+	}
+
+	return index;
+}*/
+
 void LinkedList::Clear()
 {
 	// Clear Nodes
@@ -103,6 +118,28 @@ void* LinkedList::Next()
 
 void* LinkedList::Select(unsigned int index)
 {
+	//if (!first)
+	//{
+	//	return NULL;
+	//}
+	//else
+	//{
+	//	current = first;
+	//	for (unsigned int i = 1; i < index; i++)
+	//	{
+	//		if (current->next)
+	//		{
+	//			current = current->next;
+	//		}
+	//		else
+	//		{
+	//			current = NULL;
+	//			return NULL;
+	//		}
+	//	}
+
+	//	return current->data;
+	//}
 	current = first;
 	unsigned int i = 0;
 	while (current && i < index)

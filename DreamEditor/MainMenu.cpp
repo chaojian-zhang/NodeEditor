@@ -34,6 +34,7 @@ MainMenu::MainMenu()
 	file = new Button((unsigned short*)Interface_Filemenu, this);
 	window = new Button((unsigned short*)Interface_Windowmenu, this);
 	help = new Button((unsigned short*)Interface_Helpmenu, this);
+	//search = new SearchField(NULL, 0, this);
 	background = new Panel(GraphManager::windowWidth, MainMenuHeight, MainMenuTexCoords_Bottom, MainMenuTexImage, this);
 	midground = new Panel(GraphManager::windowWidth, MainMenuHeight, MainMenuTexCoords_Middle, MainMenuTexImage, this);
 	foreground = new Panel(GraphManager::windowWidth, MainMenuHeight, MainMenuTexCoords_Top, MainMenuTexImage, this);
@@ -44,6 +45,7 @@ MainMenu::MainMenu()
 	layout.AddToRow(file);
 	layout.AddToRow(window);
 	layout.AddToRow(help);
+	//layout.AddToRow(search);
 
 	layout.Dispatch();
 
@@ -55,6 +57,7 @@ MainMenu::MainMenu()
 	GraphManager::RegisterMainMenuElements(file);
 	GraphManager::RegisterMainMenuElements(window);
 	GraphManager::RegisterMainMenuElements(help);
+	//GraphManager::RegisterMainMenuElements(search);
 }
 
 MainMenu::~MainMenu()
@@ -62,6 +65,7 @@ MainMenu::~MainMenu()
 	delete file;
 	delete window;
 	delete help;
+	//delete search;
 	delete background;
 	delete midground;
 	delete foreground;
@@ -86,6 +90,8 @@ void MainMenu::Render()
 		file->Render();
 		window->Render();
 		help->Render();
+
+		//search->Render();
 	}
 }
 
@@ -113,6 +119,10 @@ void MainMenu::OnElementMouseButton(InterfaceElement* element, int button, int a
 		unsigned int viewY = GraphManager::windowHeight + help->GetLocationY() - help->GetDimensionY() - helpPopup->viewportH;
 		helpPopup->Show(viewX, viewY);
 	}
+	//else if (element == search)  // Search Field Activation(Search Field Animation)
+	//{
+
+	//}
 	else
 	{
 		// Do nothing
@@ -157,6 +167,10 @@ void MainMenu::OnElementMouseOver(InterfaceElement* element)
 		unsigned int viewY = GraphManager::windowHeight + help->GetLocationY() - help->GetDimensionY() - helpPopup->viewportH;
 		helpPopup->Show(viewX, viewY);
 	}
+	/*else if (element == search)
+	{
+		GraphManager::currentPopup = NULL;
+	}*/
 	else
 	{
 		GraphManager::currentPopup = NULL;
@@ -165,7 +179,18 @@ void MainMenu::OnElementMouseOver(InterfaceElement* element)
 
 void MainMenu::LayerRotate(float angle)
 {
+	// Style 1
+	// Rotate the different grounds at different direction and speed(well that was distracting so the below lines use the same direction instead)
+	//background->RotateU(angle/(8*3.14));	// Sqaure fall off
+	//midground->RotateU(angle/(4*3.14));
+	//foreground->RotateU(angle/(2*3.14));	// Foreground rotate at the same speed as camera, in the same direction; But same speed is too fast, so half the speed
+
+	// Style 2
+	// Foreground fixed, mid and back rotate at same direction, this makes more sense and is less distracting
 	background->RotateU(angle/(8*3.14));
 	midground->RotateU(angle/(4*3.14));
 	// foreground->RotateU(0);	
 }
+
+// __Debug__ Currenlty no fill the width
+// background->UpdateProjection(background->GetDimensionX(), background->GetDimensionY());	// Keep faith to himself

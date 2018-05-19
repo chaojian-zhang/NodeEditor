@@ -33,6 +33,11 @@ CameraNode::CameraNode()
 	UpdateMatrix();
 }
 
+//CameraNode::CameraNode(float x, float y, float z, glm::mat4x4* rotation)
+//{
+//	// __pending
+//}
+
 void CameraNode::SaveData(FILE* file)
 {
 	unsigned char blockTag = CAMERA_NODE_BLOCK_TAG;
@@ -73,4 +78,13 @@ void CameraNode::UpdateMatrix()
 	// project = glm::perspective(/*FOV_degree*/45.f, (float)(canvas->viewportW) / (canvas->viewportH), -0.936f, 0.936f);	// -> Not render anything even z within range[-1,1]
 	// +- seems not affecting at all
 	// Indeed: According here: https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml 
+	/*
+	zNear
+	Specifies the distance from the viewer to the near clipping plane
+	(always positive).
+	zFar
+	Specifies the distance from the viewer to the far clipping plane
+	(always positive).
+	*/
+	// -> This also tells us we should carefully read legacy openGL functions for documentation about those GLM functions.
 }

@@ -2,7 +2,8 @@
 // Since we will not actually need a GUID for interface strings, because we do not ever need to compare them
 // And  Also since for peculiar reason a global string array defined here isn't just working
 // We could just use Macro Definitions instead
-#define Locale_Chn	// Change Locale selection here
+#define Locale_Eng	// Change Locale selection here
+// This way isn't very scalable to huge projects since changing this macro will cause recompiling everything
 
 // >>> English Locale
 #if defined(Locale_Eng)
@@ -57,6 +58,7 @@
 #define Canvas_Information_LoadingMesh_Begin L"Streaming mesh..."
 #define Canvas_Information_LoadingMesh_Finish L"Mesh loaded!"
 #define Canvas_Information_Save L"Document saved!"
+#define Canvas_Information_InvalidTexturePath L"MeshSpec file texture image path invalid!"
 // ///////////////////////////////////////////////////////////////////English Locale
 
 // >>> Chinese Locale
@@ -112,7 +114,7 @@
 #define Canvas_Information_LoadingMesh_Begin L"载入物体..."
 #define Canvas_Information_LoadingMesh_Finish L"物体已载入!"
 #define Canvas_Information_Save L"文档已保存!"
-
+#define Canvas_Information_InvalidTexturePath L"网格物体配置文件贴图路径不存在！"
 // ///////////////////////////////////////////////////////////////////Chinese Locale
 
 // >>> Opps, forget to define the macros

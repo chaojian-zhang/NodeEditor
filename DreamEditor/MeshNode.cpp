@@ -102,7 +102,14 @@ void MeshNode::WakeUp()
 	// Do not call base wakeUp
 	// CanvasNode::WakeUp();
 
+	/* Renderable Layout:
+		- Just a Shape Object For Now
+		- In the future, we might want to add some cool tagging facility for mesh nodes
+	*/
+
 	// Try to wake up the mesh spec
+	// while (!renderMesh)	// __Debug__ Require a mesh untill succeed; When parallel is enabled, this while loop should be dropped
+	// That is why it is dropped now
 	{
 		renderMesh = meshSpec->RequireMeshUsage();
 		renderMesh = meshSpec->RequireMeshUsage();	// Attemp it twice in a row in case it loads fast enough; actually we are doing this simply to compensate initial loading camera doesn't show meshes
@@ -125,17 +132,14 @@ void MeshNode::WakeUp()
 
 void MeshNode::FallAsleep()
 {
-	CanvasNode::FallAsleep();
+	// Make sure we have at least acquired a mesh by checking we are not asleep
+	if (bSleep == true){ return; }
 
 	if (bPendingDeletion)	return;
 
-	// Make sure we have at least acquired a mesh by checking we are not asleep
-	if (!bSleep)
-	{
-		meshSpec->ReleaseMeshUsage();
-		renderMesh = NULL;
-		bSleep = true;
-	}
+	meshSpec->ReleaseMeshUsage();
+	renderMesh = NULL;
+	bSleep = true;
 }
 
 void MeshNode::Render()

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -13,18 +13,19 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D6A95CEB-9B79-411E-A273-BAC31D00D296}</ProjectGuid>
     <RootNamespace>DreamEditor</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -74,6 +75,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AboutPopupScreen.cpp" />
+    <ClCompile Include="AnywhereDoor.cpp" />
     <ClCompile Include="Attribute.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CameraNode.cpp" />
@@ -95,6 +97,7 @@
     <ClCompile Include="InterfaceElement.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MaterialTextures.cpp" />
     <ClCompile Include="MathElegent.cpp" />
@@ -107,7 +110,9 @@
     <ClCompile Include="MeshNode.cpp" />
     <ClCompile Include="MeshNodePropertyPanel.cpp" />
     <ClCompile Include="MeshResource.cpp" />
+    <ClCompile Include="RenderableCirclesInstance.cpp" />
     <ClCompile Include="RenderableCursorHighlight.cpp" />
+    <ClCompile Include="SingleImage.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="Polysoup.cpp" />
     <ClCompile Include="PopupMenu.cpp" />
@@ -124,7 +129,9 @@
     <ClCompile Include="Renderable3DMesh.cpp" />
     <ClCompile Include="Renderable3DQuoteFrame.cpp" />
     <ClCompile Include="RenderableRoundCornerFrame.cpp" />
+    <ClCompile Include="Renderable3DTerrain.cpp" />
     <ClCompile Include="RenderableDebugRay.cpp" />
+    <ClCompile Include="SearchField.cpp" />
     <ClCompile Include="ShaderResource.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="ShortcutsPopupScreen.cpp" />
@@ -132,7 +139,9 @@
     <ClCompile Include="StringData.cpp" />
     <ClCompile Include="SystemWrapper.cpp" />
     <ClCompile Include="TerrainNode.cpp" />
+    <ClCompile Include="TestSource.cpp" />
     <ClCompile Include="TextArea.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TextContainer.cpp" />
     <ClCompile Include="TextEditor.cpp" />
     <ClCompile Include="TextLabel.cpp" />
@@ -145,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutPopupScreen.h" />
+    <ClInclude Include="AnywhereDoor.h" />
     <ClInclude Include="Attribute.h" />
     <ClInclude Include="BoxCollision.h" />
     <ClInclude Include="Button.h" />
@@ -156,8 +166,11 @@
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DevNotes.h" />
+    <ClInclude Include="DivisionLine.h" />
+    <ClInclude Include="DropDownButton.h" />
     <ClInclude Include="GlobalMacros.h" />
     <ClInclude Include="Hash.h" />
+    <ClInclude Include="MapEditor.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MaterialTextures.h" />
     <ClInclude Include="MathElegent.h" />
@@ -182,8 +195,10 @@
     <ClInclude Include="MeshResource.h" />
     <ClInclude Include="FileMenuPopupMenu.h" />
     <ClInclude Include="DocumentPropertyPanel.h" />
+    <ClInclude Include="RenderableCirclesInstance.h" />
     <ClInclude Include="RenderableCursorHighlight.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SingleImage.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="Polysoup.h" />
     <ClInclude Include="PopupMenu.h" />
@@ -199,8 +214,11 @@
     <ClInclude Include="RenderableString.h" />
     <ClInclude Include="Renderable3DMesh.h" />
     <ClInclude Include="Renderable3DQuoteFrame.h" />
+    <ClInclude Include="Renderable3DRegionalMark.h" />
     <ClInclude Include="RenderableRoundCornerFrame.h" />
+    <ClInclude Include="Renderable3DTerrain.h" />
     <ClInclude Include="RenderableDebugRay.h" />
+    <ClInclude Include="SearchField.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="ShortcutsPopupScreen.h" />
     <ClInclude Include="StaticShape.h" />
@@ -210,8 +228,12 @@
     <ClInclude Include="SystemWrapper.h" />
     <ClInclude Include="TerrainNode.h" />
     <ClInclude Include="TextArea.h" />
+    <ClInclude Include="TextArea3D.h" />
+    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="TextBox3D.h" />
     <ClInclude Include="TextContainer.h" />
     <ClInclude Include="TextEditor.h" />
+    <ClInclude Include="TextField3D.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="ShaderResource.h" />
     <ClInclude Include="TextLabel.h" />
@@ -221,6 +243,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="WindowMenuPopupMenu.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="WorldMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DreamEditor.rc" />

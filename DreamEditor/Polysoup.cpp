@@ -1,5 +1,8 @@
 #include "Polysoup.h"
 #include <stdlib.h>
+
+// __Debug__: Pending a Debug Renderable for Visualization purpose
+
 Polysoup::Polysoup(unsigned int inIndexCount, unsigned int* inIndices, unsigned int inNumVerts, float* inVerts, bool simpleBounding)
 {
 	// Initialize Sampling Vertices
@@ -108,6 +111,48 @@ bool Polysoup::CheckRayCollision(const glm::vec3& rayDir, const glm::vec3& rayLo
 		// bool TriangleIntersect(const glm::vec3& v0, const glm::vec3& v1, const glm::vec3& v2, const glm::vec3& rayDir, glm::vec3& rayOrigin)
 		if (TriangleIntersect(P1, P2, P3, rayDir, rayLoc)) return true;
 
+		//// Get the vectors
+		////glm::vec3 V1 = glm::normalize(P2 - P1);
+		////glm::vec3 V2 = glm::normalize(P3 - P1);	// Notice it should be relative to P1, just as V1
+		//glm::vec3 V1 = P2 - P1;
+		//glm::vec3 V2 = P3 - P1;	// Notice it should be relative to P1, just as V1
+		//// Note: Normalization seems the biggest difference between mine and the original code
+
+		//// u,v for bicentric coord inside triangle, and t for the ray travelling paramter of ray function
+
+		//// Check Whether Ray is Parallel to the Plane of the Traingle
+		//// Test ray direction against triangle
+		//glm::vec3 h = glm::cross(rayDir, V2);	// The Cross product betweeen Ray and one Edge of the Triangle
+		//float a = glm::dot(V1, h);
+		//// if result zero, no intersection or infinite intersections
+		//// (ray parallel to triangle plane)
+		//if (a > -0.00001 && a < 0.00001)
+		//	continue;
+
+		//// compute denominator
+		//float f = 1.f / a;
+
+		//// Compute Barycentric Coordinates
+		//glm::vec3 s = rayLoc - P1;
+		//float u = f * (glm::dot(s, h));
+		//if (u < 0.0 || u > 1.0)
+		//	continue;
+
+		//glm::vec3 q = glm::cross(s, V1);
+		//float v = f * glm::dot(rayDir, q);
+		//if (v < 0.0 || u + v > 1.0)
+		//	continue;
+
+		//// At this stage we can compute t to find out where
+		//// the intersection point is on the line
+		//float t = f * glm::dot(V2, q);
+
+		//if (t > 0.00001) // ray intersection
+		//	return true;
+
+		//else // this means that there is a line intersection
+		//	// but not a ray intersection
+		//	continue;
 	}
 
 	return false;

@@ -14,6 +14,8 @@ class ApplicationPath
 {
 public:
 	static char* CanvasFrameImagePath;
+	//static char* MainMenuFrameImagePath;	// Deprecated
+	//static char* PropertyFrameImagePath;
 	static char* IconImageFilePath;
 	static char* PrecompiledProgramFilePath;
 	static char* CharMapPath;

@@ -2,6 +2,7 @@
 #include "Interface.h"
 #include "CanvasNodes.h"
 #include "LinkedList.h"
+#include "DropDownButton.h"
 #include "Panel.h"
 #include "TextLabel.h"
 #include "TerrainNode.h"
@@ -71,6 +72,11 @@ public:
 	void AddMeshNode(unsigned short meshIndex);	// Used specifically with MeshCreationPopupMenu: Use camera position to position the node; At the time of this function, meshResources have been fully loaded
 	void UpdateRenderState(){ UpdateNodeRenderState(); }
 
+	// Object Search Facility
+	// __release 0.75__ :Since we are not so familiary with using threads, in this case we use simple search instead
+	//void SearchText(unsigned short* search);
+	//void GotoNextFoundNode();
+
 	// Rendering Facility
 	static float* GetSunColor();
 	static float* GetSkyColor();
@@ -120,9 +126,14 @@ private:
 	LinkedList meshNodes;
 	CanvasNodeSortedLinkedList visibleNodes;
 
+	// __Debug Use
+	//RenderableDebugRay* worldOrigin;	// To Remind Ourselves it is not tempTextNode but Camera Spawn point! in current debug case
+	//RenderableImageRect* debugImage;
+
 private:
 	// Interface Elements - Potential Candidates: a frame panel as decoration, a frame panel as vineette, a lower-right hand side bebug text label
 	Panel* decorationFrame;
+	// __Pending DropDownButton* dropDownButton;
 	TextLabel* informationLabel;	// Will be used for informative purposes in final release
 
 	static float imageCoords[8];

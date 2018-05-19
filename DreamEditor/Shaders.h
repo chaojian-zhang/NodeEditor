@@ -8,6 +8,7 @@ enum Programs
 	SimpleTextureProgram,	// Provide vert, texCoord, MVP and a texture binding point
 	PhongShadingProgram,	// Provide vert, texCoord, MVP, a texture binding point, and a point light property	// Actually this should be called Phone Lighting Model
 	SEMShadingProgram,	// Spherical Environment Map
+	//InstancedCircles,
 	NumberOfPrograms
 };
 
@@ -33,6 +34,15 @@ v:	loc0 vec3 position
 	loc1 mat4x4 MVP
 f:	loc2 vec3 color
 	loc3 float timescale -> Transparancy, since mainly used for animation, we called it timescale
+
+-<Specialized>InstancedCircles
+v:	(vert)loc0 vec3 vertPosition
+	(vert)loc1 vec3 shapePosition
+	(vert)loc2 vec3 shapeColor
+	(uniform)loc3 mat4x4 VP
+	(uniform)loc4 vec3 highlightColor
+	(uniform)loc5 unsigned int highlightID
+f:	
 
 -SimpleTextured
 v:	loc0 vec3 position
@@ -87,3 +97,10 @@ f:	bin0 sam2D environmentBase
 	bin2 sam2D glossMap
 
 */
+
+//class Shaders
+//{
+//public:
+//	static const GLchar* vertexShaders[NumberOfPrograms];
+//	static const GLchar* fragmentShaders[NumberOfPrograms];
+//};

@@ -69,3 +69,9 @@ void DocumentPropertyPanel::OnElementMouseButton(InterfaceElement* element, int 
 		GraphManager::canvas->ExportAll();
 	}
 }
+
+// __Pending Deprecation
+//void DocumentPropertyPanel::OnMouseButton(int button, int action, int mods, double xpos, double ypos)
+//{
+//	// Pan the interface ELements: When Property channel is panned, it will be responsible for updating all its interface elements
+//}

@@ -39,6 +39,9 @@ private:
 
 	Button* exportButton;
 
+	//TextLabel* labelComment;
+	//TextArea* textComment;
+
 	// Important Referenced Object
 	ImageNode* currentAssociation;
 };

@@ -31,6 +31,35 @@ RenderableImageRect::RenderableImageRect(Interface* parent, float width, float h
 	glEnableVertexAttribArray(1);
 }
 
+//RenderableImageRect::RenderableImageRect(Interface* parent, float coords[8], GLuint inTexture)
+//	:texture(inTexture), Renderable(Programs::SimpleTextureProgram, parent)
+//{
+//	// Generate OpenGL Object
+//	glGenBuffers(1, &tBuffer);
+//
+//	// Prepare Data, CW
+//	float vertexData[4 * 3] =
+//	{
+//		0, 0, -0.5,
+//		1, 0, -0.5,
+//		1, -1, -0.5,
+//		0, -1, -0.5
+//	};
+//
+//	// Initialize OpenGL obejcts
+//	glBindVertexArray(VAO);
+//	// Generate Vertex Buffer
+//	glBindBuffer(GL_ARRAY_BUFFER, vBuffer);
+//	glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(float), vertexData, GL_STATIC_DRAW);	// Image Rects are always static
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);	// Adhering to SimpleTextureProgram
+//	glEnableVertexAttribArray(0);
+//	// Feed texture coordinate Data to openGL
+//	glBindBuffer(GL_ARRAY_BUFFER, tBuffer);
+//	glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), coords, GL_STATIC_DRAW);
+//	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+//	glEnableVertexAttribArray(1);
+//}
+
 RenderableImageRect::~RenderableImageRect()
 {
 	// Delete buffer

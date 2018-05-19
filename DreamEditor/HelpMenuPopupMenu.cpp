@@ -68,6 +68,12 @@ void HelpMenuPopupMenu::OnElementMouseButton(InterfaceElement* element, int butt
 	{
 		graph->ShowAboutScreen();
 	}
+	//if (element == tutorial)
+	//{
+	//	// Save Current Document
+
+	//	// Open Tutorial Document
+	//}
 	if (element == manual)
 	{
 		// Open the pdf using external applications

@@ -5,6 +5,7 @@
 #include <IL\ilu.h>
 #include <iostream>
 #include <iostream>
+#include "GraphManager.h"
 extern void CheckDevILError();	// Defined in GraphManager.cpp
 
 TextureSlot MaterialTextures::textureSlots[1000];
@@ -33,6 +34,12 @@ void MaterialTextures::DeleteTextureResources()
 // Use by Interface Componenets and Phong Shaders; For imagenodes they have their own texture management system through ImageData
 GLuint MaterialTextures::GetTexture(const char* texturePath)
 {
+	if (texturePath == NULL)
+	{
+		GraphManager::canvas->UpdateInformationLabelText((unsigned short*)Canvas_Information_InvalidTexturePath);	// Currently this cannot be seen since "MeshLoaded!" always succeed this
+		return 0;
+	}
+
 	// Get the parsed ID of the image path
 	unsigned int imageID = Hash::HashID((unsigned char*)texturePath, 1000);
 	unsigned int H = imageID;	// As base for quadratic probing
@@ -137,6 +144,11 @@ GLuint MaterialTextures::GetTexture(const char* texturePath)
 
 void MaterialTextures::ReturnTexture(const char* texturePath)
 {
+	if (texturePath == NULL)
+	{
+		return;	// Ignore invalid paths
+	}
+
 	// Get the hashed ID of the image path
 	unsigned int imageID = Hash::HashID((unsigned char*)texturePath, 1000);
 	unsigned int H = imageID;

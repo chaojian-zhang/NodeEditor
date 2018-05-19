@@ -41,3 +41,7 @@ private:
 	// bookkeeper
 	unsigned int elementsSize = 0;	// Those already added in, in bytes, not the number of elements
 };
+
+// I did discover it is a much easier process to TI when conceptualize things along the way, since notes really helps, compared with
+// a blank head which cannot keep temporary data long.
+// For this reason, faster iteration really matters and one must be able to add, and delete things violently in order to make progress.

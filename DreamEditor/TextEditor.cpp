@@ -76,6 +76,13 @@ unsigned int TextEditor::GetTextHeight()
 	return text->GetBoundaryHeight();
 }
 
+//void TextEditor::UpdateContent(unsigned short* newText, unsigned int numChars)
+//{
+//	// Update content using a not so elegant way: Select all, then add in new content
+//	OnKeyboardButton(GLFW_KEY_A, 0, GLFW_PRESS, GLFW_MOD_CONTROL);
+//	OnTextInput(newText, numChars);
+//}
+
 void TextEditor::AssociateStringData(StringData* newString)
 {
 	text->Associate(newString);

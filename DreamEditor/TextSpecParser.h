@@ -44,3 +44,5 @@ private:
 	// Datas
 	LinkedList attributes;
 };
+
+// Pending: Thorough Logic Check; Deallocation; Ignore Attributes that already appeared; Adding Gettting methods

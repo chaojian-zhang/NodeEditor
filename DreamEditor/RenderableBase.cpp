@@ -68,4 +68,12 @@ void RenderableBase::UpdateMatrix()
 	// Update Matrix
 	world = glm::scale(glm::mat4(1), scaling);	// Scale First
 	world = glm::translate(world, translation) * rotation;	// Then rotate, Finally Translate
+
+	/* Q : 1. Why this doesn't work
+	A : 1. Because how the functions works, the following two are different:
+	view = glm::inverse(glm::translate(glm::mat4(1), glm::vec3(Tx, Ty, Tz))*rotation);	// Rotate first, then translate
+	view = glm::inverse(glm::translate(rotation, glm::vec3(Tx, Ty, Tz)));	// Translate first, then rotate
+	*/
+	/* Q : 2. Why order of rotation and translation doesn't matter: they produce the same result matrix
+	A : 2. They are NOT the same. The resultant matrix is different when order differ */
 }

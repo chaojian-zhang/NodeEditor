@@ -6,6 +6,7 @@
 #include "TextLabel.h"
 #include "Button.h"
 #include "StaticShape.h"
+#include "DivisionLine.h"
 class GraphManager;
 
 class MeshCreationPopupMenu : public PopupMenu
@@ -21,6 +22,7 @@ public:
 private:
 	// Interface Elements
 	TextLabel* addMeshLabel;	// "Add MeshNode"
+	// __Pending DoubleDivisionLine* divisionLine;	// Make things more organized looking
 	Button* rotatingCube;
 	Button* anywhereDoor;	// To be differentiated from "dimension door", which leads to a pocket dimension, not another part of the world
 	StaticShape* backgroundRect;

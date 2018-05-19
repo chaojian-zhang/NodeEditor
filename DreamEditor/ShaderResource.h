@@ -27,3 +27,6 @@ private:
 	// Incidentally, we may as well take care of the Icon map
 	GLuint iconMap;
 };
+
+// Shader Binary File Format Specification: since to make things compact we will store into only one file
+//	- Size, FormatToken, Binary, and repeat. We know how programs are stored there so no need to bother their order.

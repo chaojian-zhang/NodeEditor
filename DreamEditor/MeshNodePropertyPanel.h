@@ -16,6 +16,8 @@ public:
 	// Render Request
 	virtual void Render();
 
+	// Node Association
+	// void AssociateNode(MeshNode* in);
 	void Show(MeshNode* node);
 	void UpdateTransformInfo();	// When an meshNode has been moved it will call this function
 
@@ -34,6 +36,7 @@ private:
 	TextLabel* labelMeshNameValue;	// "A lovely beautiful box"
 
 	TextLabel* labelComment;	// "Commen:"
+	// TextField* textComment;
 	TextArea* textComment;
 
 	// Important Referenced Object

@@ -80,6 +80,10 @@ Material::Material(Programs type, const float* inGroundColor, const float* inPoi
 
 		memcpy(SpecularTexturePath, defaultPath, stringSize);
 	}
+	//else
+	//{
+	//	SpecularPower = 128.0f;
+	//}
 
 	// For Emission, if we have texture, then color is just a full-pass white, otherwise the defaultEmissionMask should be a full-pass white
 	// __Pending__ Since this is the same as Diffuse Texture, we might not want to use a seperate texture object
@@ -370,6 +374,13 @@ void Material::LoadStringAttribute(const char* attributeType, char** attributePr
 	// If not found 
 	if (attributeValue == NULL)
 	{
+		//// Create a space
+		//const char* defaultPath = SystemFunctions::GetExecutableDirectoryPath(ApplicationPath::DefaultMeshTexturePath);
+		//unsigned int stringSize = strlen(defaultPath) + 1;
+		//*attributeProperty = (char*)calloc(1, stringSize);
+	
+		//memcpy(*attributeProperty, defaultPath, stringSize);
+
 		// Use NULL, we have special usage for this
 		*attributeProperty = NULL;
 

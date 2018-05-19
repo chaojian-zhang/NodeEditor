@@ -8,6 +8,8 @@ unsigned int InterfaceConstant::DefaultTextAreaPixelHeight = 64U;
 float InterfaceConstant::PixelToMeterScaleFactor = (float)1 / 256;	// Emperical Value; Mathematical should be 1024
 
 char* ApplicationPath::CanvasFrameImagePath = "Data\\CanvasFrame.png"; // For ".\\Data\\CanvasFrame.png", since GetExecutablePath will not return with a \ symbol 
+//char* ApplicationPath::MainMenuFrameImagePath = "Data\\MainMenuFrame.png";
+//char* ApplicationPath::PropertyFrameImagePath = "Data\\PropertyFrame.png";
 #if defined(Locale_Eng)
 char* ApplicationPath::IconImageFilePath = "Data\\Interface_Eng.png"; 
 #elif defined(Locale_Chn)

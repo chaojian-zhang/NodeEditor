@@ -16,5 +16,5 @@ public:
 
 private:
 	static unsigned short timeString[20];	// Shared Internal Time String
-	// Format: "2015-09-07 05:03", total 16 chars + 1 NUll char
+	// Format: "2015-09-07 05:03:29", total 19 chars + 1 NUll char
 };

@@ -24,6 +24,7 @@ public:
 	virtual void OnElementMouseButton(InterfaceElement* element, int button, int action, int mods);	// Action handling: Call TextNode Export()
 
 	// Node Association
+	// void AssociateNode(TextNode* in); // Change focus from current associated node the newly selected one, update Interface Elements Accordingly
 	void Show(TextNode* node);
 	void UpdateTransformInfo();	// When an text node  has been moved it will call this function
 	// Acess TextNode, get TransformData, and updata Interface Elements
@@ -39,6 +40,17 @@ private:
 
 	TextLabel* labelEdit;	// "Edit Time"
 	TextLabel* labelEditTime;	// "2015-08-30"
+
+	//// __Debug For purely experimental purpose, final release doesn't need
+	//TextLabel* labelTransformation;	// "Transformation:"
+	//TextLabel* labelX;	// "X"
+	//TextLabel* labelY;	// "Y"
+	//TextLabel* labelZ;	// "Z"
+
+	//TextLabel* labelXValue;	// "0.1256"
+	//TextLabel* labelYValue;	// "0.3578"
+	//TextLabel* labelZValue;	// "0.3684"
+
 	Button* exportButton;
 
 	// Important Referenced Object
