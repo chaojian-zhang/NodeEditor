@@ -13,6 +13,7 @@ ShaderResource::ShaderResource()
 {
 	// Shader Programs
 	FILE* f = fopen(ApplicationPath::PrecompiledProgramFilePath, "rb");	// Open in Read mode will fail if the file doesn't exist, this is what we expect
+	if (f != NULL) bCached = true;
 	// __Pending: Add support for PhongShadingProgram
 	for (int i = 0; i < NumberOfPrograms; i++)
 	{
@@ -41,14 +42,18 @@ ShaderResource::ShaderResource()
 
 			free(binary);
 
-			// __Debug__: request more robust solution
-			if (status == GL_FALSE)
+			// If we succeeded loading, then continue
+			if (status == GL_TRUE)
+				continue;
+			// If we failed to preload a pre-compiled shader program (likely due to change of underlying hardware platform), just re-compile
+			else
 			{
+				bCached = false;	// Notify later during deconstruction we should cache it
 				std::cout << "[Error]Serious Problem Encountered: Shader Programs cannot be loaded. This will cause rendering errors. The application chooses to ignore this problem though. " << 
 					"To solve the problem, close the application, and delete Shaders.program file. Then reload." << std::endl;
 			}
 		}
-		else
+		
 		{
 			// Otherwise compile new ones and save them
 			GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -87,10 +92,8 @@ ShaderResource::ShaderResource()
 		}
 	}
 
-	if (f != NULL) bCached = true;
-
 	// Icon Map
-	// _Debug_: Notice CWD and Program DIr
+	// _Debug_: Notice CWD and Program Dir
 	char pathBuffer[MAX_PATH];
 	iconMap = MaterialTextures::GetTexture(SystemFunctions::GetExecutableDirectoryPath(ApplicationPath::IconImageFilePath, pathBuffer));
 }

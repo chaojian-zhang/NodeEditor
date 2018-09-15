@@ -30,3 +30,14 @@
 #*.exe
 *.out
 *.app
+
+# Further Exclusions
+.vs/
+DreamEditor/Debug/
+DreamEditor/Release/
+Execution Environment/*.ilk
+Execution Environment/*.exe
+Execution Environment/*.pdb
+Execution Environment/*.ipdb
+Execution Environment/*.iobj
+Execution Environment/Data/Shaders.program

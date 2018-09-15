@@ -1153,7 +1153,7 @@ bool GraphManager::InitailizeWindow()
 		return false;
 	}
 
-	// Set up openGL debug error callbacks
+	// Set up openGL debug error callbacks (Notice this is applicable only to GL4.3 or higher; Not very generic way of using OpenGL; We should target 3.2 etc.)
 #ifdef OPENGL_DEBUG
 	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);	// Better than GL_DEBUG_OUTPUT, because the error might come later
 	glDebugMessageCallback(OnOpenglError, NULL);
