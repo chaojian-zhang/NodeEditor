@@ -139,7 +139,7 @@ void Canvas::Render()
 
 	// Render to the camera
 	{
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);	// Bind to default framebuffer, i.e. the (window) display
 
 		// 3D Objects
 		drawState = 3;

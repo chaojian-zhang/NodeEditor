@@ -55,7 +55,7 @@ void CameraNode::Rotate(float rotdx, float rotdy, float rotdz)
 {
 	CanvasNode::Rotate(rotdx, rotdy, rotdz);
 
-	rotation = glm::rotate(glm::mat4(1), Ry, glm::vec3(0, 1, 0)) * glm::rotate(glm::mat4(1), Rx, glm::vec3(1, 0, 0));	// Rotate the camear
+	rotation = glm::rotate(glm::mat4(1), Ry, glm::vec3(0, 1, 0)) * glm::rotate(glm::mat4(1), Rx, glm::vec3(1, 0, 0));	// Rotate the camear; Don't rotate along Z axis
 	// Notice the order here determines the correct result
 }
 

@@ -71,7 +71,7 @@ ShaderResource::ShaderResource()
 			// Shader program
 			glAttachShader(shaders[i], vertexShader);
 			glAttachShader(shaders[i], fragmentShader);
-			glProgramParameteri(shaders[i], GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
+			glProgramParameteri(shaders[i], GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);	// Indicate to the OGL context we wish to retrieve the program's binary representation
 			glLinkProgram(shaders[i]);
 			// Delete shaders since we no longer need them
 			glDeleteShader(vertexShader);
