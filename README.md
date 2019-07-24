@@ -23,7 +23,7 @@ For compilation:
 
 # Features (as a "quality" rather than "marketing value")
 
-By and large, this is an **experimental** **personal project** intended to be just **functional** - nothing **production-level**. However for the **scope** of the project, I think it's rather complete in terms of presentation, with its **user manual** and everything.
+By and large, this is an **experimental** **personal project** intended to be just **functional** - nothing **production-level**. However for the **scope** of the project, I think it's rather complete in terms of presentation, with its **user manual** ([Documentation Folder](https://github.com/szinubuntu/NodeEditor/tree/master/Execution%20Environment/Documentation/English)) and everything.
 
 1. **OpenGL** based, thus possible to run on different OS, although system specific functions need reimplementation
 2. **Native Unicode** support, tested on windows only
