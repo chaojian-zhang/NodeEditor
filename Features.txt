@@ -1,6 +1,0 @@
-1. OpenGL based, thus possible to run on different OS, although system specific functions need reimplementation
-2. Native Unicode support, tested on windows only
-3. Phong shader with parallax mapping support; Dynamic scenery streaming
-4. Application-Independant Reusable components: BMFont loader, Simple-to-use C Style Specification file parser
-
-Note: The version of source has been moderately cleaned up to demonstrate the functional organization of code only. To inspect development process, request the original source.
