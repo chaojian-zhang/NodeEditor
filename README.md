@@ -17,7 +17,7 @@ For executables, check out [release](https://github.com/szinubuntu/NodeEditor/re
 
 For compilation:
 
-1. Install **VS2013** or above
+1. Install **VS2019** or above (for VS2013, use a [previous version](https://github.com/szinubuntu/NodeEditor/tree/1bfb14f76e2cf153ee4cb6eeb06c4e92033fcc1a) of code if you just wish to compile and see it running)
 2. Set **DreamEditor** as *startup project*
 3. Compile and run, no extra configuration is needed
 

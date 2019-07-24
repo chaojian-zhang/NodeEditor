@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "SystemWrapper.h"
 #include <Shlwapi.h>	// PathFileExist(); ShellExecute()
+#include <stdexcept>
 
 // Static Variable Definition
 // char SystemFunctions::pathBuffer[MAX_PATH] = {};

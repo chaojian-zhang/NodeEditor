@@ -41,3 +41,4 @@ Execution Environment/*.pdb
 Execution Environment/*.ipdb
 Execution Environment/*.iobj
 Execution Environment/Data/Shaders.program
+Execution Environment/Data/default.dream

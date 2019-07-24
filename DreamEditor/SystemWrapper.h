@@ -2,6 +2,7 @@
 #include <vector>	// Used specifically for Convert Strings
 #include <Windows.h>
 #include "Time.h"
+#include <string>
 
 // INput: threadLocalBuffer should be zeroed out
 class SystemFunctions
