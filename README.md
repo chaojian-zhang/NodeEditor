@@ -1,6 +1,8 @@
 # Overview
 
-This was my early practical project with **OpenGL** to create practical software application, written from ground up using raw C++, including some of **container objects**.
+This was my early practical project with **OpenGL** to create practical software application, written from ground up using raw C++, including some of **container objects**. This was a practice project, and it's no longer being maintaned.
+
+The software uses C++ from ground up implementing EVERYTHING from scratch data structures like Linked List. It is intended only for personal practice and experimental purpose. For all the future visitors, the important lesson that can be gained from this project was mostly the architecture design process, which can be glimpsed from the documentation. I am very proud of this project, but at time I didn't even know how to use Git.
 
 Many **bugs** are not fixed, **memory leak** exists. It's also tested only on **Windows 8** and **Windows 10** with **my own Lenovo Y480 laptop** and **i7 4970, GTX 970, Asus Z97-A PC** environment. Some advanced rendering techniques like **Shadow Mapping** and **Parallel Mapping** are implemented but in terms of **OpenGL API**, advanced extensions are not used. I think this project in its present state should only be considered as a more **complete OpenGL example**, showcasing how it can be used to **build an actual application**, rather than a **fully-fledged application** in itself.
 
